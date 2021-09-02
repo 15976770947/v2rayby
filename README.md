@@ -12,7 +12,7 @@ wget -N --no-check-certificate "https://github.000060000.xyz/tcpx.sh" && chmod +
 
 支持更多内核和选项
 自己换本代码里面的文件链接
-
+bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/main/Ss.sh)
 
 第三步，执行下面的命令一键搭建Telegram的MTProto代理：
 
