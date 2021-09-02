@@ -1,0 +1,324 @@
+V2ray科技
+
+
+切换导航
+一键腳本上遇到的問题
+于2021年6月10日由威龙发布
+感谢网友投稿，原文链接：http://debuginghelp.ml/2021/05/31/cdc/
+
+PS：这是该网友第二次投稿，因之前的投稿网页不稳定故未采纳
+
+用一键腳本的上可能遇到問题有不少，有些人是老手，一看就知道是甚么問题。但重点是很多不少人是linux新手(wget都不知道是啥)。
+
+常見問题集
+1.Verify error:Fetching http://某域名/.well-known/acme-challenge/VNg0BM2wYNQMJ_BLmeQrJjnG5GWzIURf2ntwk60VkUg: Timeout during connect (likely firewall problem)
+
+你可能没放行80端口，或你用的是純ipv6或NAT VPS
+
+純ipv6和NAT VPS的解决方案:在NAT VPS/IPv6 only VPS上运行本站一键脚本
+
+2.XTLS配置不允许填写“伪装域名(host)
+
+host 是 ws h2 等传输的配置，vless+tcp+xtls 只有 sni
+
+3.error:rateLimited”,
+“detail”: “Error creating new order :某域名: too many certificates already issued for exact set of domains:某域名 : see https://letsencrypt.org/docs/rate-limits/“,
+“status”: 429
+}
+
+域名申请太多次证书，换一个二級域名
+
+4.配置V2ray安装成功，域名访问也可以看到页面，但是客户端访问就是超时链接不上，换了域名也是如此，重新安装别的模式也不行，是不是被屏蔽了？
+
+99.9%客户端配置错了
+
+5.ios有客户端嗎?
+
+有。付费的v2ray客户端有：
+
+Shadowrocket(支持VLESS,XTLS)
+
+Quantumult(不支持VLESS)(超快)
+
+QuantumultX(不支持VLESS,Trojan)(超快)
+
+其他都是垃圾
+
+免費:
+
+Oneclick(不支持VLESS)
+
+Surge 4(Advance user)
+
+因政策原因，这些应用在国内app store上无法搜索到
+
+6.这个脚本申请的域名证书期限是多长？怎么手动处理？
+
+有效期三个月，会自动续期
+
+7.Xray的客户端在哪啊?
+
+下载v2ray客户端就可以，通用的
+
+8.可以优化線路的吗？
+
+用WS和CDN
+
+有其他方法，晚些説
+
+9.SSH顯示:
+
+一键脚本
+一键脚本
+
+有些情況會自動回車，這次不要先回車
+
+這不是你遇到的問题?
+tg群:這裏
+
+不想進入二次元/售人控的世界?
+
+网络跳越论坛
+
+問前一定要看
+
+正文結束
+
+ 
+
+最近tg群有很多钓魚的人，請小心。
+
+已知的有:
+
+@togsan :owmer of turkmenet 假白嫖，挺小心眼的，轉手賣白嫖來的節点(倒买倒卖)
+
+@FreeSGKbot:钓魚bot和@ETH_Miner_bb_bot一樣
+
+另外提醒各位频道主，请及时清理频道中使用两个俄语词作为用户名，且使用AI生成的奇怪头像，且无简介的订阅者，该类订阅者为机器人，会自动爬取频道所有消息并上传到服务器
+
+分类： SHADOWSOCKSR教程SHADOWSOCKS教程TROJAN教程V2RAY教程
+标签：一键脚本一键脚本问题
+31 条评论
+
+求助大佬 · 2021年8月30日 10:19
+wsarecv: An existing connection was forcibly closed by the remote host.
+v2ng出现这个问题怎么解决？手机端的shadowrocket能上去，电脑端上不去
+
+
+威龙 · 2021年8月31日 10:06
+电脑上其他软件影响了
+
+
+datdfa · 2021年8月8日 13:47
+安装nginx…
+Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+* base: ty1.mirror.newmediaexpress.com
+* elrepo: http://ftp.ne.jp
+* epel: d2lzkl7pfhq30w.cloudfront.net
+* extras: ty1.mirror.newmediaexpress.com
+* remi-php74: http://ftp.riken.jp
+* remi-safe: http://ftp.riken.jp
+* updates: ty1.mirror.newmediaexpress.com
+Package epel-release-7-13.noarch already installed and latest version
+Nothing to do
+Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+* base: ty1.mirror.newmediaexpress.com
+* elrepo: http://ftp.ne.jp
+* epel: d2lzkl7pfhq30w.cloudfront.net
+* extras: ty1.mirror.newmediaexpress.com
+* remi-php74: http://ftp.riken.jp
+* remi-safe: http://ftp.riken.jp
+* updates: ty1.mirror.newmediaexpress.com
+No package nginx available.
+Error: Nothing to do
+Nginx安装失败，请到 https://hijk.art 反馈
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+请问怎么解决？
+
+
+威龙 · 2021年8月8日 17:31
+之前安装过宝塔吧？重装系统
+
+
+Oyal · 2021年8月2日 22:08
+大佬帮忙看一下这是什么原因
+http://www.oyal.ml:Verify error:DNS problem: SERVFAIL looking up CAA for oyal.ml – the domain’s nameservers may be malfunctioning
+[Mon Aug 2 13:57:14 UTC 2021] Please add ‘–debug’ or ‘–log’ to check more details.
+[Mon Aug 2 13:57:14 UTC 2021] See: https://github.com/acmesh-official/acme.sh/wiki/How-to-debug-acme.sh
+[Mon Aug 2 13:57:14 UTC 2021] Run post hook:’systemctl restart nginx’
+获取证书失败，请复制上面的红色文字到 https://hijk.art 反馈
+
+
+威龙 · 2021年8月3日 16:40
+你的DNS商家有问题，换一家
+
+
+Oyal · 2021年8月3日 23:27
+谷歌云的dns不行，换了cloudflare的安装上了，但是我用v2ray_N测速为0，什么都打不开，ping的通
+
+
+qaz · 2021年7月14日 18:37
+Fetching http://xxx.xxx/.well-known/acme-challenge/kKscEXEStxPHz_XZTipF6H5CpoCXUgRA_tXCSJYU5Vo: Connection reset by peer
+这是什么情况？
+
+
+威龙 · 2021年7月15日 10:58
+网页防火墙没有放行端口
+
+
+jin · 2021年7月5日 20:24
+2021/07/05 20:20:04 [Warning] [2731594570] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/websocket: failed to dial WebSocket > transport/internet/websocket: failed to dial to (ws://45.76.219.27:443/nothing): > dial tcp 45.76.219.27:443: i/o timeout transport/internet/websocket: failed to dial WebSocket > transport/internet/websocket: failed to dial to (ws://45.76.219.27:443/nothing): > dial tcp 45.76.219.27:443: operation was canceled] > common/retry: all retry attempts failed
+
+问一下大佬，我的是MAC电脑，挂代理之后还是上不了外网，报错如上，请问是哪一部分出了问题呢？
+
+
+威龙 · 2021年7月5日 22:24
+443端口被墙了，换一个
+
+
+jin · 2021年7月6日 00:08
+2021/07/06 00:03:19 [Warning] [2046951201] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/websocket: failed to dial WebSocket > transport/internet/websocket: failed to dial to (ws://45.76.219.27/nothing): > unexpected EOF] > common/retry: all retry attempts failed
+2021/07/06 00:03:19 [Info] [2046951201] app/proxyman/inbound: connection ends > proxy/socks: connection ends > proxy/socks: failed to transport all TCP response > io: read/write on closed pipe
+端口换成80之后又试了一次，还是不行
+
+
+威龙 · 2021年7月6日 19:09
+换个其他的
+
+
+麦麦 · 2021年6月19日 23:34
+你好啊，大佬，请教
+
+我90天证书到期了 宝塔变成了-1天 不能用了 这个自动续期 是怎么操作
+我重新装了一遍续满了，但是还想知道自动续期我什么都不做等就好了吗还是怎样，这样下次就不用重装了。
+
+如能回复，万分感谢！！
+
+
+威龙 · 2021年6月20日 18:02
+你上网搜一下acme续期，按理说应该会自动续期的
+
+
+麦麦 · 2021年6月20日 22:28
+好的 感谢 ！
+
+
+mocha · 2021年6月17日 22:12
+大佬，用的v2rayn导入vmess链接，连接网站后提示以下信息
+2021/06/17 22:10:12 127.0.0.1:54139 accepted http://baidu.com/ [http >> proxy]
+2021/06/17 22:10:12 [Warning] [1572045213] proxy/http: failed to read response from baidu.com > io: read/write on closed pipe
+2021/06/17 22:10:13 127.0.0.1:54143 accepted http://baidu.com/favicon.ico [http >> proxy]
+2021/06/17 22:10:13 [Warning] [2901538] proxy/http: failed to read response from baidu.com > io: read/write on closed pipe
+
+
+威龙 · 2021年6月17日 22:19
+节点挂了
+
+
+555321 · 2021年6月17日 19:49
+[Thu Jun 17 11:45:35 UTC 2021] xxx.xxx:Timeout
+[Thu Jun 17 11:45:35 UTC 2021] Please add ‘–debug’ or ‘–log’ to check more details.
+[Thu Jun 17 11:45:35 UTC 2021] See: https://github.com/acmesh-official/acme.sh/wiki/How-to-debug-acme.sh
+[Thu Jun 17 11:45:35 UTC 2021] Run post hook:’systemctl restart nginx’
+获取证书失败，请复制上面的红色文字到 https://hijk.art 反馈
+
+请问这是什么问题。centos7 谷歌云
+
+
+威龙 · 2021年6月17日 22:19
+网页后台安全组没有放行
+
+
+555321 · 2021年6月18日 00:19
+我在防火墙设置开放了443端口,还是不行.
+
+
+555321 · 2021年6月18日 00:31
+在这打勾搞定了:
+
+防火墙
+允许 HTTP 流量
+允许 HTTPS 流量
+
+
+威龙 · 2021年6月18日 15:59
+换个系统试试
+
+
+555321 · 2021年6月18日 16:11
+我已经搞定,就是防火墙设置的问题,两个允许一打勾,刷刷刷开始安装
+
+
+悦悦 · 2021年6月15日 15:27
+大佬 最近发现v2不能远程访问服务器的局域网机器了，之前是可以的，是配置规则改变了吗
+
+
+威龙 · 2021年6月15日 16:06
+可能是新版做了规则更新，我没用过这个功能
+
+
+qqq · 2021年6月15日 10:26
+Create new order error. Le_OrderFinalize not found. {“type”:”urn:ietf:params:acme:error:rejectedIdentifier”,”status”:400,”detail”:”Invalid DNS identifier [144.202.34.174]”}
+Please add ‘–debug’ or ‘–log’ to check more details.
+See: https://github.com/acmesh-official/acme.sh/wiki/How-to-debug-acme.sh
+
+
+威龙 · 2021年6月15日 11:02
+域名的dns设置有问题
+
+
+Citrus · 2021年6月15日 00:00
+连接v2的情况下无法访问部署在该服务器上的网站，断开就能访问了，为什么呢？用的本站的xray脚本和wp脚本
+
+
+威龙 · 2021年6月15日 00:05
+客户端配置错了
+
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合 - V2ray科技 · 2021年6月10日 10:50
+[…] PS：一些常见问题可以参考：一键脚本上遇到的问题 […]
+
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+科学上网用的vps和域名的選購
+PC端科学上网常见问题
+深入理解Clash配置文件
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+收手吧阿祖，外面全是警察
+TROJAN教程
+近期一些现象的提示
+最近是敏感时期，部分人会发现平时好好能上外网，突然就不行了！这又是怎么一回事呢？
+
+一键脚本申请证书错误
+V2RAY教程
+一键脚本证书申请失败、无法自动续期的解决办法
+近期有网友反馈本站一键脚本无法申请证书，或者证书过期后不会自动续期的问题
+
+qv2ray
+SHADOWSOCKSR教程
+下载qv2ray完全版
+一票人下了qv2ray后，发现只能用vless和vmess，连机埸订阅的入口也没有，最后只能黑qv2ray，how to fix it?
+
+本站食用指南隐私政策©2020 V2ray科技
