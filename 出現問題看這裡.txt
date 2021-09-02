@@ -1,0 +1,23 @@
+原版
+
+resolve=curl -sL https://hijk.art/hostip.php?d=${DOMAIN}
+
+ip=curl -sL https://hijk.art/hostip.php?d=${host}
+
+
+
+
+
+
+mod1
+
+resolve=curl -sL http://ip-api.com/json/${DOMAIN}
+
+ip=curl -sL http://ip-api.com/json/${host}
+
+
+mod2
+
+resolve=dig ${DOMAIN} +short
+
+ip=dig ${host} +short
