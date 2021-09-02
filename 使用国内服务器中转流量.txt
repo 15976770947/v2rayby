@@ -1,0 +1,567 @@
+V2ray科技
+
+
+切换导航
+使用国内服务器中转流量
+于2019年12月19日由威龙发布
+如有问题，欢迎到 网络跳越论坛 或 tg群组https://t.me/hijk.club 交流
+
+经本人亲身实践，通过国内服务器转发科学上网流量不仅能有效避免墙的干扰，还有加速的作用。流量转发说白了就是流量从“国内<–>境外vps”变成了“国内<–>国内vps<–>境外vps”。看似多了一步，其实大有好处：国内服务器延迟很低，但出入境流量走高级线路，加起来一算总延迟实际上降低了；此外选择好的中转服务器，高峰时期也能跑满带宽，爽的一批。
+
+中转属于 硬件加速 ，代价是额外需要一台国内的服务器，优点是更稳定、能（比较）有效防止境外ip或端口被封。一些付费工具的高级线路也使用中转，以提供更优质的体验。
+
+本教程详细介绍转发的过程，如有不明白的地方，欢迎留言讨论。
+
+配置国内服务器中转流量
+既然要通过国内服务器转发流量，首先必须要一台国内服务器。国内服务器的选择有很多，建议使用NAT VPS，年付几十到一两百，NAT VPS中转请参考：使用NAT VPS中转加速。也可以用阿里云、腾讯云这些大厂商的服务器，质量和服务都比较有保障。由于服务器仅做流量转发用，买最低配置的就可以，1核256m内存足够，看视频的话带宽买大点，也可以选择流量计费模式（不适合视频党）。
+
+本文以CentOS 7/8系统为例介绍国内服务器中转配置，分别介绍firewalld流量转发和nginx流量转发两种方式。
+
+firewalld流量转发
+firewalld是CentOS7/8默认的防火墙前端软件，绝大多数主机商提供的镜像都已经安装。如果执行 firewall-cmd --state的输出不是 running，请使用下面命令安装并开启firewalld：
+
+yum install -y firewalld
+systemctl enable firewalld
+systemctl start firewalld
+接着配置转发。假设你将国内服务器8080端口流量转发到国外vps的443端口，转发命令如下：
+
+echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
+sysctl -p
+firewall-cmd --permanent --add-masquerade
+# 8080可以改成其他端口
+firewall-cmd --permanent --add-port=8080/tcp
+firewall-cmd --permanent --add-port=8080/udp
+# 8080和上面保持一致，国外ip改成你国外vps的ip，443改成国外ss/ssr/v2ray等软件的端口
+firewall-cmd --permanent --add-forward-port=port=8080:proto=tcp:toaddr=国外ip:toport=443
+firewall-cmd --permanent --add-forward-port=port=8080:proto=udp:toaddr=国外ip:toport=443
+firewall-cmd --reload
+运行上述命令后，打开ss/ssr/v2ray等客户端软件，把ip和端口 改成国内vps的ip和端口号，应该同样能正常上外网。
+
+如果中转trojan流量，记得把客户端配置文件中的两个verify选项设置为false!
+
+firewalld转发的好处是效率高，直接在内核执行。
+
+Nginx流量转发
+Nginx是非常强大的四层、七层反向代理软件，功能强大，在互联网上广泛应用。本节介绍Nginx转发配置。
+
+1. 首先安装nginx：yum install -y epel-release && yum install -y nginx；
+
+2. 配置nginx：编辑/etc/nginx/nginx.conf文件，加入转发配置：
+
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+# 增加的配置
+stream {
+    server {
+        listen 端口号;  # 1-65535的任意一个数字，无需与境外服务器的端口号相同
+        proxy_pass 境外ip:境外端口号; # 用境外ip和端口号替换
+    }
+}
+# 转发配置结束
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+    ....
+}
+配置中增加了以 stream 开头的那一段，其他都是自带的。将上面代码中的ip和端口换成你的，然后保存文件。用nginx -t检查配置有没有错误，有如下输出说明配置正确：
+
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+如果有问题，请按照提示更改。
+
+3. 改好后设置开机启动并启动nginx：systemctl enable nginx && systemctl start nginx。接着用ss -ntlp| grep -i nginx查看软件是否正常运行。如果输出为空，可能的问题是端口号冲突，改成其他端口号试试；或者是selinux的限制，用下面命令禁用selinux：
+
+sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+setenforce 0
+
+4. 如果服务器启动了防火墙，放行nginx监听的端口。怎么看防火墙是否开启呢？输入firewall-cmd --state，输出是”running”表示防火墙正在运行。用如下命令把端口放行：
+
+firewall-cmd --permanent --add-port=nginx中配置的端口号/tcp
+fireawll-cmd --reload
+5. 如果服务器厂商上层还有防火墙/安全组(阿里云/腾讯云等购买的vps)，请记得到控制台放行相应端口。
+
+完成上述操作后，搭建手机、电脑上的ss/ssr/v2ray等客户端，把ip和端口 改成国内vps的ip和端口号，应该同样能正常上外网。
+
+如果中转trojan流量，记得把客户端配置文件中的两个verify选项设置为false!
+
+Nginx效率不如firewalld/iptables，但是配置更灵活，使用上更便利。
+
+配置境外服务器
+原则上只要境外服务器没被墙或者端口没有被封，配置好国内服务器就直接能用且有加速效果。对境外服务器做配置，主要是为了降低墙的干扰，减少ip被墙的机率。如果你不清楚下面的操作，请不要做这一步！
+
+配置境外服务器的重点：除ssh的22、正常服务的端口(例如网站)，其他端口只允许国内服务器连接。操作如下：
+
+1. 启动系统防火墙：systemctl enable firewalld && systemctl start firewalld
+
+2. 删除之前放行过的ss/ssr/v2ray等端口（如果配置过）：firewall-cmd --permanent --remove-port=端口/tcp
+
+3. 仅允许国内ip连接该服务器：
+
+firewall-cmd --permanent --add-source=国内ip/32
+fireawll-cmd --reload
+经过如上配置后，gfw探测你的vps，除了ssh、网站等常用端口，ss/ssr/v2ray的端口直接无法连接，被墙的概率自然就降低了。
+
+其他
+一些注意事项：
+
+nginx支持转发流量到多个服务器实现负载均衡，配置上需要用到upstream块，请参考文档或留言；
+如果用的是iptables，把firewalld命令替换成iptables命令执行就可以
+如果动手能力强，最好把境外vps配置得像一个业务机器，例如一个有各种爬虫访问的网站，基本上就稳如狗了（本人用的就是这种）；
+配置客户端时，ip和端口填国内服务器的，其他信息（密码、加密方式等）和国外服务器保持一致；
+NAT VPS需要端口映射，因此客户端配置的ip和端口应该是NAT VPS映射获取到的公网ip和端口号。
+ 
+
+分类： VPS教程
+标签：firewalld中转firewalld流量转发Nginx中转科学上网
+216 条评论
+
+MissingCorn · 2020年8月30日 17:08
+我用的阿里云中转，没有配置境外服务器，能成功连接上外网。但是上外网的速度很慢，用V2RAY客户端测速功能测出来是0.09M/s，不用转发速度是2.1M/s，问题出在哪了？
+
+
+跳越者 · 2020年8月30日 17:10
+阿里云带宽低
+
+
+Alex · 2020年8月29日 18:15
+还是不通啊。错误提示：2020/08/29 17:56:20 [Warning] failed to handler mux client connection > v2ray.com/core/proxy/vmess/outbound: connection ends > v2ray.com/core/proxy/vmess/outbound: failed to read header > v2ray.com/core/proxy/vmess/encoding: failed to read response header > read tcp 192.168.50.4:2226->43.248.191.57:30803: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+
+跳越者 · 2020年8月29日 19:26
+转发配置错误，或者国外服务器部署有问题
+
+
+w · 2020年8月21日 10:03
+怎么能确定线路对接是否有问题呢，是不是又专门的线路对接的
+
+
+跳越者 · 2020年8月22日 14:49
+没有，都需要自己测试
+
+
+w · 2020年8月20日 20:57
+重新配置好了，但是中转后延迟是之前直连的3倍，这是配置出问题了吗
+
+
+跳越者 · 2020年8月20日 22:57
+应该是线路问题
+
+
+wong · 2020年8月20日 20:05
+使用了异株湖firewall中转后速度更慢了，是不是vps端口转发效率不行啊
+
+
+跳越者 · 2020年8月20日 22:57
+不是，中转vps的线路个国外的对不上吧
+
+
+w · 2020年8月20日 18:41
+按照教程配置好了，换成国内vps的IP和端口后也能ping通，延迟降下来了，但是无法访问网络了，国内的网站解析完也没有内容返回，是不是哪里出问题了
+
+
+跳越者 · 2020年8月20日 18:54
+中转服务配置有问题
+
+
+mengtang · 2020年8月15日 20:54
+您好，请问我用的cloudiplc电信vps中转，但是速度反而慢很多，这种是什么情况呢
+
+
+跳越者 · 2020年8月15日 21:15
+中转vps的出口线路和国外vps的线路对不上
+
+
+Trymybest · 2020年7月16日 02:04
+大佬 求助 要崩溃了。。。。不知道怎么联系您，我的邮箱949987410@qq.com 有偿求助
+
+
+跳越者 · 2020年7月16日 07:32
+发邮件到我的邮箱v2raytech.com@protonmail.ch
+
+
+Trymybest · 2020年7月16日 02:03
+大佬求一个联系方式，
+
+
+TIamo · 2020年6月1日 08:51
+大佬，按照你的教程，两种方法都试了，效果都有，但是还是不太稳。
+————————————–
+如果动手能力强，最好把境外vps配置得像一个业务机器，例如一个有各种爬虫访问的网站，基本上就稳如狗了（本人用的就是这种）；
+能指导下这个操作么
+
+
+跳越者 · 2020年6月1日 09:19
+这个需要自己写代码或者部署服务
+
+
+TIamo · 2020年6月2日 08:15
+用了ssr+nignx流量中转+caddy+静态html搞了一个，不知道能活多久…
+—————-
+基本上搞明白伪装的意思了。就是救不活已死的VPS。
+
+
+跳越者 · 2020年6月2日 10:36
+用cloudflare可以救活，参考这篇：cloudflare拯救被墙ip
+
+
+TIamo · 2020年6月3日 08:55
+这个我搞过，V2+Cloudflare太慢了，也不稳，经常断流。还是喜欢酸酸乳。
+————————————————————————————————-
+大佬，国内中转的VPS可以安装BBR，给nginx加速么。感觉很慢的样子
+
+
+跳越者 · 2020年6月3日 09:00
+可以
+
+
+夜寐纵欲 · 2020年6月25日 05:00
+cloudflare可以救活，通过大佬写的笨牛自定义中转节点，加速效果还不错！
+
+
+跳越者 · 2020年6月25日 09:25
+选到好的节点是挺好
+
+
+TIamo · 2020年5月30日 09:01
+nginx支持转发流量到多个服务器实现负载均衡
+——————————————————————
+大佬，请指导下这个操作，实现国内VPS一个端口对应国外多个VPS的多个端口
+多谢!
+
+
+跳越者 · 2020年5月30日 09:12
+需要用到upstream指令
+
+
+TIamo · 2020年5月30日 09:55
+这样使用可以么
+
+stream{
+server{
+listen 0.0.0.0:10190;
+proxy_responses 0;
+proxy_timeout 2s;
+proxy_pass proxy_b;
+proxy_pass proxy_c;
+}
+
+upstream proxy_b{
+server 192.168.1.101:10290;
+}
+upstream proxy_c{
+server 192.168.1.102:10290;
+}
+}
+
+
+跳越者 · 2020年5月30日 12:18
+把服务器放在upstream里
+
+
+JFFFAF · 2020年5月20日 17:24
+大佬，我用Nginx设置好了，服务器用的是腾讯云，但为什么连不上外网
+2020/05/20 17:21:51 tcp:127.0.0.1:64092 accepted tcp:www.youtube.com:443 [proxy]
+2020/05/20 17:21:51 tcp:127.0.0.1:64091 accepted tcp:www.youtube.com:443 [proxy]
+2020/05/20 17:22:04 [Warning] failed to handler mux client connection > v2ray.com/core/proxy/vmess/outbound: failed to find an available destination > v2ray.com/core/common/retry: [dial tcp 122.51.167.14:8080: connectex: No connection could be made because the target machine actively refused it.] > v2ray.com/core/common/retry: all retry attempts failed
+
+
+跳越者 · 2020年5月20日 18:26
+网页后台的防火墙没打开
+
+
+Dewar · 2020年5月19日 14:20
+大佬，你好 我想问一下 我按照你的firewall配置设置好了端口转发 ipv4转发什么的也都整好了 但是用SSR客户端连接国内IP和端口就只有发送数据，没有接收数据，直连国外的就正常。很奇怪
+
+
+跳越者 · 2020年5月19日 14:23
+国内服务器内配置好或者网页后台还有防火墙
+
+
+Dewar · 2020年5月19日 14:34
+public (active)
+target: default
+icmp-block-inversion: no
+interfaces: eth0
+sources:
+services: dhcpv6-client http https ssh
+ports: 8080/udp 8080/tcp
+protocols:
+masquerade: yes
+forward-ports: port=8080:proto=udp:toport=81:toaddr=国外ip
+port=8080:proto=tcp:toport=81:toaddr=国外ip
+sourceports:
+icmp-blocks:
+rich rules:
+
+阿里云网页防火墙那边也都放行了1到65535的tcpudp端口了
+
+
+Dewar · 2020年5月19日 14:40
+错误显示connection closed by peer
+
+
+跳越者 · 2020年5月19日 14:42
+这个提示是没转发成功，看看国外服务器有什么日志
+
+
+Dewar · 2020年5月19日 15:00
+tcprelay.py:1097 can not parse header when handling connection from ::ffff:国内ip:7414
+
+看了下SSR的日志提示这个
+
+
+跳越者 · 2020年5月19日 15:03
+看起来是客户端配置错误
+
+
+a · 2020年5月17日 13:55
+试了nginx转发，完全没用
+
+
+跳越者 · 2020年5月17日 17:45
+为啥没用？
+
+
+aTreeYang · 2020年5月13日 15:24
+大佬 有个问题咨询下
+昨天我按照教程做了国内vps的流量中转，国外vps也做了防火墙的设置，可以正常使用
+今天突然不能翻墙了，然后我试了下把防火墙关掉就可以翻墙了。这个是防火墙的设置有问题么？
+防火墙配置如下：
+[root@hk-vps ~]# firewall-cmd –list-all
+public (active)
+target: default
+icmp-block-inversion: no
+interfaces: eth0 eth1
+sources: 国内vps ip/32
+services: dhcpv6-client http ssh
+ports: 80/tcp 443/tcp
+protocols:
+masquerade: no
+forward-ports:
+source-ports:
+icmp-blocks:
+rich rules:
+
+
+aTreeYang · 2020年5月13日 15:25
+使用的本站的SSR
+
+
+aTreeYang · 2020年5月13日 15:36
+已经搞定了 我刚查看了下端口情况 发现SSR的代理端口没有放开，重新放开了端口可以了。可能是昨天配置firewall 的时候忘记加–permanent参数了，重启配置丢失了。尴尬
+
+
+跳越者 · 2020年5月13日 15:46
+感觉是你国外vps重启过，然后配置的防火墙规则又变成默认的了
+
+
+xl1nux · 2020年5月8日 17:56
+现在国内的云主机对被墙的机器不起作用吧！
+我一个hostdare的机器被屏蔽的机器好像就不行
+
+
+跳越者 · 2020年5月8日 17:57
+被墙的不行，能起到被墙的作用
+
+
+zzz · 2020年5月6日 09:48
+这个使用国内服务器中转流量，是只需要在国内服务器上进行配置就行了?不用再国外服务器上再进行配置？
+
+
+跳越者 · 2020年5月6日 09:57
+对
+
+
+zzz · 2020年5月6日 10:09
+把ip和端口 改成国内vps的ip和端口号，那我密码填什么？配置Trojan时候的密码吗？
+
+
+跳越者 · 2020年5月6日 10:10
+对
+
+
+zzz · 2020年5月6日 10:29
+好像没有反应啊，我国内的服务器搭建的一个WordPress博客，现在也访问不进去了
+
+
+跳越者 · 2020年5月6日 10:49
+配置错了
+
+
+zzz · 2020年5月6日 11:16
+是按照firewalld流量转发，进行配置的，那我是再照着重新弄一遍？
+
+
+跳越者 · 2020年5月6日 11:40
+检查一下配置
+
+
+zzz · 2020年5月6日 11:43
+是检查哪个配置？
+
+
+跳越者 · 2020年5月6日 11:44
+中转机器的，还有客户端的
+
+
+zzz · 2020年5月6日 11:51
+我用的腾讯云的服务器做的中转，该怎样进行 查看？
+
+
+跳越者 · 2020年5月6日 11:55
+看客户端日志
+
+
+zzz · 2020年5月6日 15:21
+[2020-05-06 15:20:11] [ERROR] 127.0.0.1:56736 cannot establish connection to remote server 106.54.129.54:8080: 由于连接方在一段时间后没有正确答 复或连接的主机没有反应，连接尝试失败。
+[2020-05-06 15:20:11] [INFO] 127.0.0.1:56736 disconnected, 0 bytes received, 517 bytes sent, lasted for 26 seconds
+[2020-05-06 15:20:11] [ERROR] 127.0.0.1:56742 cannot establish connection to remote server 106.54.129.54:8080: 由于连接方在一段时间后没有正确答 复或连接的主机没有反应，连接尝试失败。
+[2020-05-06 15:20:11] [INFO] 127.0.0.1:56742 disconnected, 0 bytes received, 517 bytes sent, lasted for 23 seconds
+[2020-05-06 15:20:11] [INFO] 127.0.0.1:56777 disconnected, 0 bytes received, 0 bytes sent, lasted for 6 seconds
+[2020-05-06 15:20:11] [INFO] 127.0.0.1:56779 disconnected, 0 bytes received, 0 bytes sent, lasted for 0 seconds
+[2020-05-06 15:20:11] [INFO] 127.0.0.1:56782 disconnected, 0 bytes received, 0 bytes sent, lasted for 0 seconds
+[2020-05-06 15:20:11] [ERROR] 127.0.0.1:56747 cannot establish connection to remote server 106.54.129.54:8080: 由于连接方在一段时间后没有正确答 复或连接的主机没有反应，连接尝试失败。
+[2020-05-06 15:20:11] [INFO] 127.0.0.1:56747 disconnected, 0 bytes received, 517 bytes sent, lasted for 21 seconds
+[2020-05-06 15:20:11] [ERROR] 127.0.0.1:56751 cannot establish connection to remote server 106.54.129.54:8080: 由于连接方在一段时间后没有正确答 复或连接的主机没有反应，连接尝试失败。
+[2020-05-06 15:20:11] [INFO] 127.0.0.1:56751 disconnected, 0 bytes received, 517 bytes sent, lasted for 21 seconds
+
+日志是这些，是什么原因？
+
+
+跳越者 · 2020年5月6日 16:13
+看起来是腾讯云后台的安全组没有放行8080端口
+
+
+zzz · 2020年5月6日 17:04
+我修改了入站规则，添加了TCP UDP的8080端口，然后还是不行
+
+[2020-05-06 17:03:05] [INFO] 127.0.0.1:59696 disconnected, 0 bytes received, 517 bytes sent, lasted for 0 seconds
+[2020-05-06 17:03:05] [ERROR] 127.0.0.1:59694 SSL handshake failed with 106.54.129.54:8080: certificate verify failed
+[2020-05-06 17:03:05] [INFO] 127.0.0.1:59694 disconnected, 0 bytes received, 517 bytes sent, lasted for 0 seconds
+[2020-05-06 17:03:06] [INFO] 127.0.0.1:59703 requested connection to clients1.google.com:443
+[2020-05-06 17:03:06] [INFO] 127.0.0.1:59707 requested connection to clients1.google.com:443
+[2020-05-06 17:03:06] [ERROR] 127.0.0.1:59703 SSL handshake failed with 106.54.129.54:8080: certificate verify failed
+[2020-05-06 17:03:06] [INFO] 127.0.0.1:59703 disconnected, 0 bytes received, 517 bytes sent, lasted for 0 seconds
+[2020-05-06 17:03:07] [ERROR] 127.0.0.1:59707 SSL handshake failed with 106.54.129.54:8080: certificate verify failed
+[2020-05-06 17:03:07] [INFO] 127.0.0.1:59707 disconnected, 0 bytes received, 517 bytes sent, lasted for 1 seconds
+[2020-05-06 17:03:07] [INFO] 127.0.0.1:59711 requested connection to clients1.google.com:443
+[2020-05-06 17:03:07] [INFO] 127.0.0.1:59715 requested connection to http://www.youtube.com:443
+[2020-05-06 17:03:08] [ERROR] 127.0.0.1:59711 SSL handshake failed with 106.54.129.54:8080: certificate verify failed
+[2020-05-06 17:03:08] [INFO] 127.0.0.1:59711 disconnected, 0 bytes received, 517 bytes sent, lasted for 1 seconds
+[2020-05-06 17:03:08] [ERROR] 127.0.0.1:59715 SSL handshake failed with 106.54.129.54:8080: certificate verify failed
+[2020-05-06 17:03:08] [INFO] 127.0.0.1:59715 disconnected, 0 bytes received, 517 bytes sent, lasted for 1 seconds
+
+
+跳越者 · 2020年5月6日 17:11
+trojan配置文件里的两个verify改成false，然后重新打开
+
+
+zzz · 2020年5月6日 17:23
+我电脑上已经成功了，但是我手机上用，还是不行，用的 igniter APP，是什么原因呢
+
+
+跳越者 · 2020年5月6日 19:47
+应该要勾选不安全之类的
+
+
+mhyun · 2020年5月5日 01:10
+trojan可以做转发吗？有没教程？
+
+
+跳越者 · 2020年5月5日 08:28
+可以转发，操作还是一样的
+
+
+李飞 · 2020年4月18日 07:28
+大神，nginx 照你的配置 v2ray ws 用不了不知道为什么？
+
+
+跳越者 · 2020年4月18日 07:29
+v2ray客户端有啥日志？
+
+
+李飞 · 2020年4月18日 08:45
+v2ray.com/core/app/proxyman/inbound: failed to close connection > v2ray.com/core/transport/internet/websocket: failed to close connection > v2ray.com/core/transport/internet/websocket: write tcp 172.26.4.144:10550->183.160.76.72:17263: write: broken pipe
+2020/04/18 08:36:25 [Info] [939838433] v2ray.com/core/app/proxyman/outbound: failed to process outbound traffic > v2ray.com/core/proxy/freedom: connection ends > context canceled
+2020/04/18 08:36:25 [Info] [2310583233] v2ray.com/core/app/proxyman/inbound: connection ends > v2ray.com/core/proxy/vmess/inbound: connection ends > v2ray.com/core/proxy/vmess/inbound: failed to transfer request > websocket: close 1006 (abnormal closure): unexpected EOF
+2020/04/18 08:36:25 [Info] [2310583233] v2ray.com/core/app/proxyman/outbound: failed to process outbound traffic > v2ray.com/core/proxy/freedom: connection ends > context canceled
+
+
+李飞 · 2020年4月18日 08:29
+直接使用就可以，小火箭里面更换国内ip和端口就不行了。iptables 和nginx 都不行。v2ws模式
+
+
+跳越者 · 2020年4月18日 11:19
+那应该就是配置错了
+
+为什么回程路由比去程路由重要？ - V2ray科技 · 2021年2月22日 19:51
+[…] 使用国内服务器中转流量 、 使用NAT VPS中转加速 和 […]
+
+« 上一页12
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+科学上网用的vps和域名的選購
+PC端科学上网常见问题
+深入理解Clash配置文件
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+cloudflare logo
+VPS教程
+人均博客系列一:零成本搭个永久可用的博客
+人均博客系列主要是教你用最低的成本搭个不错的blog,而不是叫你买dmit装Wordpress再套cf等(不可描述)的行为。
+
+樱空桃
+VPS教程
+科学上网用的vps和域名的選購
+本文主要是水文章(ps:warp ipv6分流分到我要死了)説一下科学上网要選購什么,什么適合你?
+
+三上悠亚
+VPS教程
+Warp系列1(warp接管ipv4+ipv6)
+昨天在github找代码，看到一个项目,上面写了: 3：WARP分配的IPV4或者IPV6的IP段，都支持奈非Netflix流媒体，无视VPS原IP限制！ 4：加速VPS到CloudFlare CDN节点访问速度！ 5：避开原VPS的IP需要谷歌验证码问题！ 读后感:真香
+
+本站食用指南隐私政策©2020 V2ray科技
