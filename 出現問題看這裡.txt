@@ -39,3 +39,5 @@ Description=V2ray Service
 Documentation=https://hijk.art
 After=network.target nss-lookup.target
 出問題刪除這個試一試嘿嘿嘿
+
+如果脚本发现未找到Dig命令，可能需要安装bind-utils[centos系统]，或者[Debain系统]dnsutils，安装完成再执行脚本
