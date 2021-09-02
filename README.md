@@ -29,3 +29,6 @@ bash <(curl -sL https://s.hijk.art/mtproto.sh)
 
 bash -c "$(curl -sS https://gitee.com/fhcloud/lighthouse_serviceuninstall/raw/master/uninstall.sh )"
 自己换本代码裡面
+
+互聯網時光機歷史網站
+https://web.archive.org/web/20210902033525/https://v2raytech.com/bye-bye/
