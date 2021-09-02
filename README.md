@@ -1,4 +1,9 @@
 # v2rayby
+其他備份人士
+https://github.com/t2015q/scripts
+其他備份人士
+https://github.com/wixfreto/hijkpw-scripts
+
 CentOS系统请输入yum install -y curl，Ubuntu/Debian系统请输入sudo apt install -y curl，然后再次运行上面的命令：
 安装魔改BBR/BBR Plus/锐速(Lotserver)
 根据 v2ray一键脚本 教程安装v2ray，提示重启时按 ctrl+c 中止重启；
