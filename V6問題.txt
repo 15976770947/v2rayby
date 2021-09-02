@@ -1,0 +1,10 @@
+Cat Dog:
+@hijkpw  大佬，我想修改v2ray脚本,作为备份。有一处检查vps是否属于ipv6，有个V6_PROXY判断，若不通过博主的gh.hijk.art网站判断的话，需要怎么修改此处代码呢？
+
+hijk @hijkclub:
+那就不清楚了
+
+那个是代理ipv6的
+
+自行搭建寶塔面板  搭建ipv6網絡
+不過不可能的哈哈
