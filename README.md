@@ -23,3 +23,7 @@ bash <(curl -sL https://s.hijk.art/mtproto.sh)
 
 
 自己替换
+#腾讯云轻量服务器卸载监控程序
+
+bash -c "$(curl -sS https://gitee.com/fhcloud/lighthouse_serviceuninstall/raw/master/uninstall.sh )"
+自己换本代码裡面
