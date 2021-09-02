@@ -1,0 +1,832 @@
+V2ray科技
+
+
+切换导航
+安装魔改BBR/BBR Plus/锐速(Lotserver)
+于2020年3月22日由威龙发布
+安装过程中遇到问题，欢迎到 网络跳越论坛 或 tg群组https://t.me/hijkclub 交流。
+
+ 
+
+2021.03.13更新：推荐使用如下脚本
+
+wget -N --no-check-certificate "https://github.000060000.xyz/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
+
+支持更多内核和选项
+
+本站的 Shadowsocks/SS一键脚本、ShadowsocksR/SSR一键脚本、v2ray一键脚本、v2ray带伪装一键脚本和trojan一键脚本 默认安装的是原版BBR。不采用魔改BBR/BBR Plus/锐速等加速技术，主要出于以下几点考虑：
+
+1. 原版BBR由官方支持，新系统默认采用。其他几种则是个人修改、破解得到，不建议在生产环境用；
+
+2. 魔改BBR/BBR Plus/锐速（目前）不支持新版系统（CentOS 8、Ubuntu 19等）；
+
+3. 不少VPS商家明确指出不允许安装魔改BBR/锐速，否则断网。原版BBR发包方式比较温和，其他几个则是发包狂魔，用多了会严重影响邻居VPS网络，增加线路拥挤，因此某些商家禁止安装。
+
+另外说一下，OpenVZ机器（基本上）无法上使用面提到的加速技术。不过目前KVM的机器是主流，影响不是很大。
+
+如果运行了本站的一键脚本，感觉网速还是不够快，可以试试魔改BBR/BBR Plus/锐速。本教程介绍安装魔改BBR/BBR Plus/锐速的操作流程。
+
+某些系统可能无法安装上锐速，建议使用魔改BBR，效果不比锐速差
+
+安装魔改BBR/BBR Plus/锐速(Lotserver)
+本节以CentOS 7系统v2ray为例，介绍安装魔改BBR/BBR Plus/锐速(Lotserver)操作流程。如果你的系统是CentOS 8/Ubuntu 19等新版系统，请重装系统到旧版本再根据本教程操作。
+
+1. 根据 v2ray一键脚本 教程安装v2ray，提示重启时按 ctrl+c 中止重启；
+
+2. 安装其他加速内核：wget -N --no-check-certificate "https://raw.githubusercontent.com/hijkpw/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh，界面如下：
+
+魔改BBR/BBR Plus/锐速一键脚本
+魔改BBR/BBR Plus/锐速一键脚本
+
+3. 本教程以锐速为例，输入3，按回车；
+
+4. 屏幕上开始滚动各种信息，直到出现重启提示：
+
+魔改BBR/BBR Plus/锐速(Lotserver)一键脚本提示重启
+魔改BBR/BBR Plus/锐速(Lotserver)一键脚本提示重启
+
+5. 输入y重启vps；
+
+6. 等一分钟后重新连接到服务器， 执行 ./tcp.sh，会出现第2步的界面。因为已经安装好内核，这一步启用加速即可。输入8，然后回车；
+
+7. 屏幕上继续出现一些信息，不用管，直到出现下面的提示：
+
+确认安装锐速
+确认安装锐速
+
+8. 按回车，屏幕上出现许多信息，安装完成后回到主界面，可以看到状态变成是“启动成功”：
+
+锐速安装成功
+锐速安装成功
+
+9. 接下来按11或者ctrl+c退出脚本就可以了。
+
+魔改BBR/BBR Plus的安装过程基本一致，认真看提示操作就行了。
+
+安装好后，快试试速度有没有变快吧！
+
+参考
+1. https://github.com/hijkpw/Linux-NetSpeed
+
+分类： VPS教程
+标签：BBR PlusBBR Plus一键脚本锐速一键脚本魔改BBR魔改BBR一键脚本
+238 条评论
+
+斯内克 · 2021年4月25日 20:25
+大佬，最近被这个烦死了，求帮帮忙，我用的是Vultr的CentOS 7系统版本，前面装好自己也试了下一切正常，后面装BBR后，不管是哪个版本 都连不上网了，ping了下倒都是通的 这到底是什么原因
+
+
+威龙 · 2021年4月25日 20:28
+可能vultr有限制了。如果只是bbr，vultr有带bbr的centos 7版本，不需要运行这个脚本了
+
+
+斯内克 · 2021年4月25日 20:55
+好的 谢谢 vultr自带bbr的centos 7版本好像没看到 只有2个centos 7X64和centos 7X64 WITHout SELinux 这两种版本
+
+
+威龙 · 2021年4月25日 20:56
+本站脚本默认会安装bbr
+
+
+我叫意志力 · 2021年4月3日 04:25
+楼主，你好，Lotsever：4.11.2-1版本，在centos 7 64位(搬瓦工vps)环境下发现了点问题，
+就是用https://github.000060000.xyz下的tcpx.sh脚本”使用Lotserver(锐速)加速”后，刚开始可以启动成功，但后面如果vps重启后，这个加速效果就显示启动失败了（此时要重新运行脚本重新输入Lotserver(锐速)才行），可以的话麻烦楼主您看看会不会这样，谢谢
+(题外话，Lotsever真心加快了很多，实在感谢楼主大大）
+
+
+威龙 · 2021年4月3日 10:34
+这个脚本是别人写的，具体本人也不清楚
+
+
+我叫意志力 · 2021年4月2日 14:15
+大佬，请教下，想问下centos7 64位版本(搬瓦工vps)，安装哪个bbr版本加速效果好点（BBRplus新版内核 还是 锐速 还是其它的）
+
+
+威龙 · 2021年4月2日 16:54
+锐速
+
+
+我叫意志力 · 2021年4月2日 16:56
+好的，谢谢
+
+
+nick · 2021年3月23日 17:49
+麻烦大神帮我看一下这个问题：
+
+今天刚买了dmit的spro的vps，运行这个脚本的时候一直停在这里不动：
+–2021-03-23 09:45:20– https://github.000060000.xyz/tcpx.sh
+Resolving github.000060000.xyz (github.000060000.xyz)… 185.199.111.153, 185.199.110.153, 185.199.109.153, …
+Connecting to github.000060000.xyz (github.000060000.xyz)|185.199.111.153|:443… connected.
+我另外两个vps从来没出现过这个
+
+
+威龙 · 2021年3月23日 19:25
+ip link set eth0 mtu 1350，然后再运行脚本
+
+
+nick · 2021年3月23日 19:27
+搞定了 谢谢大神
+
+
+dd · 2021年1月6日 01:32
+大佬 centos7 在安装完bbrplus 内核后 yum 安装东西 报错了
+abrt-addon-pstoreoops-2.1.11-50.el7.centos.x86_64 有缺少的需求 abrt-addon-kerneloops
+abrt-addon-vmcore-2.1.11-50.el7.centos.x86_64 有缺少的需求 abrt-addon-kerneloops
+abrt-cli-2.1.11-50.el7.centos.x86_64 有缺少的需求 abrt-addon-kerneloops
+glibc-headers-2.17-260.el7_6.5.x86_64 有缺少的需求 kernel-headers >= (‘0’, ‘2.2.1’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(PDE_DATA) = (‘0’, ‘0x44f0d59d’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__bitmap_weight) = (‘0’, ‘0x4cbbd171’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__cond_resched_lock) = (‘0’, ‘0xe2cfb038’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__fentry__) = (‘0’, ‘0xbdfb6dbb’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__init_waitqueue_head) = (‘0’, ‘0xf432dd3d’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__kmalloc) = (‘0’, ‘0xd2b09ce5’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__list_add) = (‘0’, ‘0x0343a1a8’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__list_del_entry) = (‘0’, ‘0x65e75cb6’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__mutex_init) = (‘0’, ‘0x9a025cd5’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__stack_chk_fail) = (‘0’, ‘0xf0fdf6cb’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__vmalloc) = (‘0’, ‘0xa9bd2676’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__wake_up) = (‘0’, ‘0xcf21d241’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_r10) = (‘0’, ‘0x7e526bfa’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_r12) = (‘0’, ‘0x263ed23b’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_r13) = (‘0’, ‘0xe7b00dfb’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_r14) = (‘0’, ‘0xce8b1878’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_r15) = (‘0’, ‘0x0f05c7b8’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_r8) = (‘0’, ‘0x1ed8b599’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_r9) = (‘0’, ‘0xdf566a59’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_rax) = (‘0’, ‘0x2ea2c95c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_rbx) = (‘0’, ‘0x593c1bac’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_rcx) = (‘0’, ‘0xc29957c3’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_rdx) = (‘0’, ‘0xb601be4c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(__x86_indirect_thunk_rsi) = (‘0’, ‘0xa1f9a134’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_cond_resched) = (‘0’, ‘0xa1c76e0a’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_raw_qspin_lock) = (‘0’, ‘0x4b7dcf38’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_raw_qspin_lock_irq) = (‘0’, ‘0x3588d8ba’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_raw_read_lock) = (‘0’, ‘0x9b0c8220’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_raw_spin_lock_bh) = (‘0’, ‘0x1637ff0f’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_raw_spin_lock_irqsave) = (‘0’, ‘0x9327f5ce’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_raw_spin_unlock_bh) = (‘0’, ‘0xba63339c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_raw_spin_unlock_irqrestore) = (‘0’, ‘0x08f64aa4’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(_raw_write_lock) = (‘0’, ‘0x13a1a61a’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(autoremove_wake_function) = (‘0’, ‘0xc8b57c27’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(bdevname) = (‘0’, ‘0x8f619a88’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(bio_add_page) = (‘0’, ‘0x4554b079’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(bio_alloc_bioset) = (‘0’, ‘0xeb862489’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(bio_endio) = (‘0’, ‘0xdd5fbc2b’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(bio_put) = (‘0’, ‘0x867c68af’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(bio_reset) = (‘0’, ‘0x060f6a84’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(bioset_create) = (‘0’, ‘0x1b57183e’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(bioset_free) = (‘0’, ‘0x8f49a246’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(blk_finish_plug) = (‘0’, ‘0x0ce900af’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(blk_limits_io_min) = (‘0’, ‘0x124af3bf’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(blk_limits_io_opt) = (‘0’, ‘0x7c922190’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(blk_start_plug) = (‘0’, ‘0x925520d2’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(blkdev_get_by_path) = (‘0’, ‘0x6f3b39e8’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(blkdev_put) = (‘0’, ‘0x1a86fdbf’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(complete) = (‘0’, ‘0x4b06d2e7’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(complete_and_exit) = (‘0’, ‘0x5aeb145f’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(cpu_online_mask) = (‘0’, ‘0x930484aa’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(crc32_le) = (‘0’, ‘0x802d0e93’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(current_task) = (‘0’, ‘0xb8c7ff88’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(del_timer_sync) = (‘0’, ‘0xd5f2172f’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(dm_get_device) = (‘0’, ‘0xf3d46cd5’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(dm_put_device) = (‘0’, ‘0xa767fd96’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(dm_register_target) = (‘0’, ‘0xcf368f2b’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(dm_table_get_mode) = (‘0’, ‘0x6d0f1f89’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(dm_unregister_target) = (‘0’, ‘0x62b8c739’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(dump_stack) = (‘0’, ‘0x6b2dc060’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(find_first_zero_bit) = (‘0’, ‘0xf11543ff’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(find_next_zero_bit) = (‘0’, ‘0x479c3c86’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(finish_wait) = (‘0’, ‘0xfa66f77c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(fs_bio_set) = (‘0’, ‘0x30877173’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(generic_make_request) = (‘0’, ‘0xd42803ea’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(get_random_bytes) = (‘0’, ‘0x79aa04a2’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(getnstimeofday64) = (‘0’, ‘0x211f68f1’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(init_timer_key) = (‘0’, ‘0x0593a99b’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(io_schedule) = (‘0’, ‘0x93a6e0b2’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(jiffies) = (‘0’, ‘0x7d11c268’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(jiffies_to_msecs) = (‘0’, ‘0x37befc70’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(jiffies_to_usecs) = (‘0’, ‘0x7f24de73’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kernel_stack) = (‘0’, ‘0x4c4fef19’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kfree) = (‘0’, ‘0x037a0cba’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kmalloc_caches) = (‘0’, ‘0x98ab5c8d’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kmem_cache_alloc_trace) = (‘0’, ‘0x41ec4c1a’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kobject_add) = (‘0’, ‘0xd9c798eb’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kobject_get) = (‘0’, ‘0x75b1f1fb’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kobject_init) = (‘0’, ‘0x9d6dbebd’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kobject_put) = (‘0’, ‘0x54554948’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(ksize) = (‘0’, ‘0x04ea5d10’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kstrtoll) = (‘0’, ‘0x1b17e06c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kstrtoull) = (‘0’, ‘0x060ea2d6’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kthread_create_on_node) = (‘0’, ‘0xc35e4b4e’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kthread_should_stop) = (‘0’, ‘0xb3f7646e’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(kthread_stop) = (‘0’, ‘0x42f90a31’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(list_del) = (‘0’, ‘0x0521445b’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(memcmp) = (‘0’, ‘0x449ad0a7’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(memcpy) = (‘0’, ‘0x69acdf38’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(memmove) = (‘0’, ‘0xb0e602eb’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(memset) = (‘0’, ‘0xfb578fc5’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(mod_timer) = (‘0’, ‘0x8834396c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(module_layout) = (‘0’, ‘0x28950ef1’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(msecs_to_jiffies) = (‘0’, ‘0x3bd1b1f6’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(msleep) = (‘0’, ‘0xf9a482f9’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(mutex_lock) = (‘0’, ‘0x9abdea30’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(mutex_unlock) = (‘0’, ‘0x4ed12f73’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(nr_cpu_ids) = (‘0’, ‘0xfe7c4287’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(page_offset_base) = (‘0’, ‘0x7cd8d75e’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(phys_base) = (‘0’, ‘0x4c9d28b0’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(prepare_to_wait) = (‘0’, ‘0x5c8b5ce8’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(prepare_to_wait_exclusive) = (‘0’, ‘0xf8983de7’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(printk) = (‘0’, ‘0x27e1a049’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(proc_create_data) = (‘0’, ‘0x8c34c149’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(proc_mkdir) = (‘0’, ‘0x73839c7a’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(pv_irq_ops) = (‘0’, ‘0x78764f4e’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(pv_lock_ops) = (‘0’, ‘0x784213a6’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(remove_proc_entry) = (‘0’, ‘0xa16aae11’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(remove_proc_subtree) = (‘0’, ‘0x5ae98fc6’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(schedule) = (‘0’, ‘0x01000e51’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(schedule_hrtimeout) = (‘0’, ‘0xd705b4c7’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(schedule_timeout) = (‘0’, ‘0xd62c833f’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(scnprintf) = (‘0’, ‘0x4ca9669f’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(seq_lseek) = (‘0’, ‘0x1685c91c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(seq_read) = (‘0’, ‘0x9c3df9b4’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(seq_write) = (‘0’, ‘0x97544bdc’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(single_open) = (‘0’, ‘0x16a5a12f’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(single_release) = (‘0’, ‘0x2296f507’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(sme_me_mask) = (‘0’, ‘0x17fbce60’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(snprintf) = (‘0’, ‘0x28318305’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(sprintf) = (‘0’, ‘0x91715312’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(sscanf) = (‘0’, ‘0x20c55ae0’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strcasecmp) = (‘0’, ‘0xaafdc258’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strchr) = (‘0’, ‘0x349cba85’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strcmp) = (‘0’, ‘0xe2d5255a’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strcpy) = (‘0’, ‘0xe914e41e’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strlen) = (‘0’, ‘0x754d539c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strncasecmp) = (‘0’, ‘0x96b29254’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strncmp) = (‘0’, ‘0x5a921311’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strncpy) = (‘0’, ‘0x9166fada’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(strnstr) = (‘0’, ‘0xc310b981’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(submit_bio) = (‘0’, ‘0xc4076f47’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(usecs_to_jiffies) = (‘0’, ‘0xb54533f7’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(usleep_range) = (‘0’, ‘0x12a38747’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(vfree) = (‘0’, ‘0x999e8297’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(vmalloc_base) = (‘0’, ‘0x9cb986f2’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(vmalloc_to_page) = (‘0’, ‘0x18e6b5cd’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(vmemmap_base) = (‘0’, ‘0x97651e6c’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(vprintk) = (‘0’, ‘0xbf8ba54a’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(vsnprintf) = (‘0’, ‘0x99195078’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(wait_for_completion) = (‘0’, ‘0x6d0aba34’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(wait_for_completion_interruptible) = (‘0’, ‘0x015ddbdc’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(wake_up_process) = (‘0’, ‘0xe65cdceb’, None)
+kmod-kvdo-6.1.0.153-15.el7.x86_64 有缺少的需求 kernel(yield) = (‘0’, ‘0x760a0f4f’, None)
+systemtap-devel-3.2-4.el7.x86_64 有缺少的需求 kernel-devel-uname-r
+错误：check all
+
+是系统内核崩了嘛
+
+
+威龙 · 2021年1月6日 05:11
+建议重启试试
+
+
+dd · 2021年1月6日 07:19
+我重启了下 还是不行
+
+
+dd · 2021年1月12日 15:15
+大佬 这个问题解决了 需要先运行 yum remove abrt-addon-pstoreoops glibc-headers compat-glibc-headers 之后yum install abrt-addon-pstoreoops glibc-headers compat-glibc-headers重新装回来就行 谢谢！
+
+
+威龙 · 2021年1月12日 15:34
+这是你系统环境问题
+
+
+dd · 2021年1月12日 15:46
+我估计是 我刚才用瓦工给的centos7 也报同样的错误 可能是centos更新导致的bug吧
+
+
+三四郎 · 2020年10月26日 01:06
+大神，求教。家里电信带宽300兆带宽，白天速度（看油管）能达到30000kb，凌晨左右速度才300kb。
+
+请问这种情况跟什么有关系，该怎么解决好。
+
+感谢！
+
+
+威龙 · 2020年10月26日 11:50
+换一个vps
+
+
+三四郎 · 2020年10月28日 23:07
+我用的是搬瓦工，vps线路是下面这个
+
+20G KVM – PROMO – default.hostname (2020-06-24 – 2021-06-23)
+Location: US – Los Angeles DC2 QNET (USCA_2) *
+
+包年的，49.99US
+
+您有什么好的推荐么，谢谢！
+
+
+威龙 · 2020年10月28日 23:24
+这个可以，或者在本站搜akkocloud
+
+
+三四郎 · 2020年10月28日 23:25
+感谢！
+
+
+白小纯 · 2020年9月15日 15:35
+为什么使用’就是爱生活’的安装脚本，只能安装成功BBR,安装bbrplus和锐速都一样，进入程序依旧显示的:当前状态: BBR，安装加速管理的只有bbr加速能用，这是为什么（搬瓦工Centos7）
+
+
+威龙 · 2020年9月15日 17:41
+那是显示错误，不用管
+
+
+lee · 2020年9月13日 01:31
+同8.23发帖的dae的问题，vultr有的时候确实装不上bbr，我也不明原因。只要一装就用不了，也找不到报错问题。但是vps是通的，因为可以通过重装系统，然后不装魔改版解决。去年的梯子用这个方法完全没问题可以安装魔改，现在好像大概率不行了
+
+
+威龙 · 2020年9月13日 07:28
+换不带bbr的centos 7系统试试
+
+
+lee · 2020年9月13日 01:26
+Error! I can not generate the Lic for you, Please try again later.
+按照上面步骤到最后输入8激活lotserver的时候不行，报错如下
+
+sed: can’t read /appex/etc/config: No such file or directory
+sed: can’t read /appex/etc/config: No such file or directory
+./tcp.sh: line 215: /appex/etc/config: No such file or directory
+./tcp.sh: line 217: /appex/bin/lotServer.sh: No such file or directory
+
+求问怎么解决
+
+
+梦想书生 · 2020年9月7日 17:24
+老大，无论我安装锐速还是魔改，都会出现如下提示，如果我不终止删除，系统就坏了，重启不了。中止的话就安装不成功。我的操作系统是Ubuntu 16.04 LTS，请指教我该如何操作才能安装锐速或者魔改BBR？
+Removing linux-image-4.15.0-1081-gc
+
+You are running a kernel (version 4.15.0-1081-gcp) and attempting to remove the same version.
+
+This can make the system unbootable as it will remove /boot/vmlinuz-4.15.0-1081-gcp and all modules under the directory /lib/modules/4.15.0-1081-gcp. This can only be fixed with a copy of the kernel image and the corresponding modules.
+
+It is highly recommended to abort the kernel removal unless you are prepared to fix the system after removal.
+
+Abort kernel removal?
+
+
+跳越者 · 2020年9月7日 17:26
+换个系统试试
+
+
+梦想书生 · 2020年9月7日 17:40
+好的，看来就是不支持这个系统，CentOS就没问题。谢谢老大
+
+
+dae · 2020年8月23日 23:47
+不知道怎么回复。。vultr应该是带bbr的
+
+
+跳越者 · 2020年8月24日 07:30
+vultr系统用了带bbr的吗？正常vultr是可以安装魔改bbr的
+
+
+dae · 2020年8月23日 23:38
+安装魔改bbr之后vps就无法启动了，vultr的vps。是不支持还是我操作有问题。
+我是先完整安装原v2脚本并重启。使用了一段时间之后运行魔改bbr脚本。
+
+
+跳越者 · 2020年8月23日 23:39
+你viltr系统选的带bbr的？
+
+
+ASH · 2020年8月16日 16:30
+没有伪装，您的意思是要注册另外的域名用带伪装的脚本吗？
+
+
+跳越者 · 2020年8月16日 16:40
+没有伪装可能容易被封
+
+
+ASH · 2020年8月15日 13:06
+大佬，我安装了，魔改bbr网速是不错，但是前提是有网速，我经常打开v2ray总是没有网速，刷新半天突然有一下能用了后边才没事，但是基本每次打开要刷新半个小时才能用，是vps的问题吗？还是软件的问题
+
+
+跳越者 · 2020年8月15日 13:19
+用伪装了吗？
+
+
+张冲 · 2020年8月11日 21:41
+大佬，请问我开了加速网更慢了该咋整呢？加速前1000+延迟，下载速度4-5k，加速后3000延迟，下载速度1-2k
+
+
+跳越者 · 2020年8月12日 07:19
+试一下魔改bbr
+
+
+胡一 · 2020年7月16日 23:20
+获取证书失败，请到 https://www.v2raytech.com 反馈
+大佬，這樣怎麼辦？
+
+
+跳越者 · 2020年7月16日 23:32
+前面的报错信息发一下
+
+
+lllolll · 2020年7月1日 14:26
+大佬，我运行完第三步安装锐速然后重启之后就再也连接不上服务器了，现在一小时过去了我也没连上
+
+
+lllolll · 2020年7月1日 14:27
+错了是第五步
+
+
+跳越者 · 2020年7月1日 14:36
+那你需要重装系统了，有些vps装了就启动不了
+
+
+三四郎 · 2020年6月27日 16:17
+一键脚本进行“锐速”加速，卡在“重启中”，按楼上经验重启“Bitvise”软件后，打开“New terminal console”进行“魔改”加速，半天没反应。关闭软件再新打开“Bitvise”，软件界面就再也看不到“New terminal console”了。换了台电脑重新安装“Bitvise”，也是没有“New terminal console”。
+
+求大神指点一二。
+
+
+跳越者 · 2020年6月27日 16:19
+说明没连上服务器，到网站后台重启一下试试
+
+
+三四郎 · 2020年6月27日 16:34
+到kiwivm控制面板重启服务器后，重新打开bitvise软件，输入相关信息login后，显示“connection established”。在软件左侧，还是看不到“New terminal console”选项。
+
+
+跳越者 · 2020年6月27日 16:35
+要登录成功才出现啊
+我觉得你的问题是系统弄坏了，搬瓦工后台重装系统试试，不要选带bbr的那个系统
+
+
+三四郎 · 2020年6月27日 16:36
+小飞机正常使用，可以登录油管和谷歌。
+
+
+跳越者 · 2020年6月27日 16:36
+那应该是电脑客户端配置错了
+
+
+三四郎 · 2020年6月27日 16:47
+客户端配置是按照网站教程操作的，如果是电脑客户端配置错了，为啥换台电脑也是这样啊/(ㄒoㄒ)/~~。我先按大神的提示把服务器系统重新搞一下。实在不行再请教，感谢!
+
+
+tl · 2020年6月21日 21:16
+我按照该文章的步骤执行到“启动锐速”这一步时，输入8，执行命令后，不像文章中那样显示“已启动”，而是显示“未安装加速模块”，请问这算启动锐速了吗？
+
+
+跳越者 · 2020年6月21日 21:31
+不算，建议重新试试
+
+
+三四郎 · 2020年6月27日 20:27
+我重新弄了服务器系统后，遇到跟楼上同样的问题。重安装了几次脚本，都是“当前状态：已安装Losterver加速内核，未安装加速模块”
+
+不知道接下来该怎么搞，求助。
+
+
+跳越者 · 2020年6月27日 20:31
+有些商家的安装不了，建议换魔改bbr
+
+
+三四郎 · 2020年6月27日 20:37
+显示：【信息】魔改版BBR启动成功！
+
+是不是这样就可以了。
+
+
+跳越者 · 2020年6月27日 20:37
+是的
+
+
+Jason · 2020年6月9日 23:12
+请问搬瓦工的Ubuntu 18.04 x86_64 系统可以用这个锐速吗？我装了下，有弹出是否终止移除的界面，YES和NO我都试过，一个没装成功，一个把主机装挂了，必须要快照恢复。 是我哪里搞错了吗？
+
+
+跳越者 · 2020年6月9日 23:21
+有些系统不一定能安装成功锐速，建议用魔改BBR，不比锐速差
+
+
+lee · 2020年6月9日 00:38
+安装魔改bbr的时候，安装完成后显示这个，用不了
+v2ray运行状态：已停止
+尝试过重启或者启动v2ray依然是已停止
+请问如何解决？
+
+
+跳越者 · 2020年6月9日 00:40
+sed -i ‘/NoNewPrivileges/d’ /etc/systemd/system/multi-user.target.wants/v2ray.service;
+systemctl daemon-reload
+
+运行这两个命令，然后重启v2ray看看行不行
+
+
+foresttt · 2020年6月7日 23:29
+为什么 我装完锐速加速器 速度还是特别慢啊？
+看ytb 都特别卡 我是 在linode 买的服务器
+
+
+跳越者 · 2020年6月7日 23:46
+现在晚高峰，linode的速度卡是正常的啊，这家线路晚上就是爆炸
+
+
+明天 · 2020年6月5日 23:58
+[注意] 重启VPS后，请重新运行脚本开启Lotserver
+需要重启VPS后，才能开启Lotserver，是否现在重启 ? [Y/n] :y
+[信息] VPS 重启中…
+一直重启不了 怎么回事
+
+
+跳越者 · 2020年6月5日 23:59
+什么系统？
+
+
+明天 · 2020年6月6日 00:03
+Bitvise
+
+
+跳越者 · 2020年6月6日 00:04
+断开重新连接一下
+
+
+明天 · 2020年6月6日 00:08
+有什么办法解决吗大神
+
+
+跳越者 · 2020年6月6日 00:09
+退出bitvise，重新连接看看
+
+
+明天 · 2020年6月6日 00:11
+还是到重启就卡住
+
+Complete!
+Loaded plugins: fastestmirror
+kernel-devel-3.10.0-327.rpm | 11 MB 00:00:00
+Examining /var/tmp/yum-root-gSP74n/kernel-devel-3.10.0-327.rpm: kernel-devel-3.10.0-327.el7.x86_64
+/var/tmp/yum-root-gSP74n/kernel-devel-3.10.0-327.rpm: does not update installed package.
+Error: Nothing to do
+检测到 0 个其余内核，开始卸载…
+–nodeps -e 内核卸载完毕，继续…
+[注意] 重启VPS后，请重新运行脚本开启Lotserver
+需要重启VPS后，才能开启Lotserver，是否现在重启 ? [Y/n] :y
+[信息] VPS 重启中…
+
+
+跳越者 · 2020年6月6日 00:13
+退出bitvise，重新连过去显示这个？
+
+
+明天 · 2020年6月6日 00:17
+对话框没有任何按钮, 是不是我版本不对 Bitvise SSH Client 8.38
+
+
+跳越者 · 2020年6月6日 00:18
+大哥，把bitvise退出，然后重新打开，再连过去看看怎么样了，ok？
+
+
+明天 · 2020年6月6日 00:20
+退了 重新打开是新的对话框了 就是重新从第一步开始 我试过几次都不行
+
+
+跳越者 · 2020年6月6日 00:22
+那应该是你服务器的操作系统不支持安装锐速，重装吧
+
+
+kevin · 2020年6月8日 14:04
+我是vultr主机 系统是CentOS 7 x64 也是一直重启中…
+
+
+跳越者 · 2020年6月8日 14:05
+装锐速的话不要选without selinux那个系统
+
+
+leon · 2020年6月5日 15:42
+请问大神 下面是 什么问题 看不懂
+配置成功
+Vmess-美国洛杉矶vur2(www***top:443)
+启动服务(2020/6/5 15:40:55)…
+V2Ray 4.23.4 (V2Fly, a community-driven edition of V2Ray.) Custom (go1.14.1 windows/386)
+A unified platform for anti-censorship.
+2020/06/05 15:40:55 [Info] v2ray.com/core/common/platform/ctlcmd:
+v2ctl> Read config: F:\bitvise\v2rayN-Core\config.json
+2020/06/05 15:40:55 [Warning] v2ray.com/core: V2Ray 4.23.4 started
+2020/06/05 15:40:55 tcp:127.0.0.1:51628 accepted tcp:raw.githubusercontent.com:443 [proxy]
+2020/06/05 15:40:55 tcp:127.0.0.1:51626 accepted tcp:raw.githubusercontent.com:443 [proxy]
+2020/06/05 15:40:55 tcp:127.0.0.1:51629 accepted tcp:raw.githubusercontent.com:443 [proxy]
+2020/06/05 15:41:03 [Warning] failed to handler mux client connection > v2ray.com/core/proxy/vmess/outbound: failed to find an available destination > v2ray.com/core/common/retry: [v2ray.com/core/transport/internet/websocket: failed to dial WebSocket > v2ray.com/core/transport/internet/websocket: failed to dial to (wss://www.tlfvip.top/tlfvpnleon): 502 Bad Gateway > websocket: bad handshake] > v2ray.com/core/common/retry: all retry attempts failed
+
+
+跳越者 · 2020年6月5日 15:44
+配置错了或者节点失效了
+
+
+leon · 2020年6月5日 16:07
+502 Bad Gateway 域名+路径打开是这样的 正常吗
+
+
+跳越者 · 2020年6月5日 16:11
+不正常，后端v2ray挂了
+
+
+leon · 2020年6月5日 16:29
+你好大神 我卸载了 重新运行脚本 就出现这样的提示了 .请问大神怎么处理？
+Jun 16:28:02 ntpdate[7547]: adjust time server 132.163.97.6 offset 0.000952 sec
+端口号：41722，伪装路径：/vpnkevin23bt， v2启动失败，请检查端口是否被占用或伪装路径是否有特殊字符！ ！
+
+
+跳越者 · 2020年6月5日 17:31
+netstat -ntlp，出现什么？
+建议先卸载再安装一次
+
+
+跳越者 · 2020年6月6日 22:24
+今天找到问题了，是v2官方脚本的问题，本站已经修复，可以再运行试试
+
+
+TLF · 2020年6月4日 21:25
+点击完最后一步一键设置路由器规则 出现了 下面的信息 ，但是不能科学上网
+请问是什么原因
+
+配置成功
+Vmess-美国洛杉矶Vur(www***net:443)
+启动服务(2020/6/4 21:18:37)…
+V2Ray 4.23.4 (V2Fly, a community-driven edition of V2Ray.) Custom (go1.14.1 windows/386)
+A unified platform for anti-censorship.
+2020/06/04 21:18:37 [Info] v2ray.com/core/common/platform/ctlcmd:
+v2ctl> Read config: H:\google\v2rayN-Core\config.json
+2020/06/04 21:18:37 [Warning] v2ray.com/core: V2Ray 4.23.4 started
+2020/06/04 21:18:37 tcp:127.0.0.1:54903 accepted tcp:facebook.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54905 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54907 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54906 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54911 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54913 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54914 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54915 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54918 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54919 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54925 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:37 tcp:127.0.0.1:54926 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:39 tcp:127.0.0.1:54952 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:39 tcp:127.0.0.1:54954 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:39 tcp:127.0.0.1:54956 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:39 tcp:127.0.0.1:54955 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:42 tcp:127.0.0.1:54961 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:42 tcp:127.0.0.1:54962 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:42 tcp:127.0.0.1:54966 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:42 tcp:127.0.0.1:54967 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:44 tcp:127.0.0.1:54969 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:47 tcp:127.0.0.1:54972 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:47 tcp:127.0.0.1:54975 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:49 tcp:127.0.0.1:54977 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:59 tcp:127.0.0.1:54980 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:18:59 tcp:127.0.0.1:54983 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:02 tcp:127.0.0.1:54986 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:02 tcp:127.0.0.1:54987 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:06 tcp:127.0.0.1:54990 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:07 tcp:127.0.0.1:54993 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:07 tcp:127.0.0.1:54995 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:07 tcp:127.0.0.1:54997 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:08 tcp:127.0.0.1:55000 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:08 tcp:127.0.0.1:55001 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:09 tcp:127.0.0.1:55004 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:09 tcp:127.0.0.1:55007 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:09 tcp:127.0.0.1:55010 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:09 tcp:127.0.0.1:55011 accepted tcp:clients1.google.com:443 [proxy]
+2020/06/04 21:19:09 tcp:127.0.0.1:55012 accepted tcp:clients1.google.com:443 [proxy]
+
+
+TLF · 2020年6月4日 21:32
+2020/06/04 21:28:27 [Warning] failed to handler mux client connection > v2ray.com/core/proxy/vmess/outbound: connection ends > v2ray.com/core/proxy/vmess/outbound: failed to read header > v2ray.com/core/proxy/vmess/encoding: failed to read response header > read tcp 192.168.1.9:56730->144.202.126.98:443: wsarecv: An existing connection was forcibly closed by the remote host.
+
+
+跳越者 · 2020年6月4日 22:00
+看起来是节点挂了
+
+
+白又白 · 2020年6月4日 12:28
+我是搬瓦工服务器，昨天用V2ray一键脚本安装好了以后，速度不是很快，还出现了断线的情况，今天早上还能用，然后又还锐速安装不上，就连接不上超时了，请问是什么情况，是更改我服务器的端口还是更改安装V2ray的端口？
+
+
+跳越者 · 2020年6月4日 12:29
+ssh连接不上了？可能是锐速把系统弄坏了，后台重装系统再试试
+
+
+白又白 · 2020年6月4日 12:47
+xshell可以连接的上，刚才测试了一下，ip正常，端口正常。应该是锐速安装的时候出现的问题，我怎么改v2ray的端口，是把他卸载掉重新安装还是？
+
+
+白又白 · 2020年6月4日 12:50
+我重新运行一次脚本还需在再安装魔改BBR加速吗？
+
+
+跳越者 · 2020年6月4日 13:50
+安装成功了就不需要了
+
+
+跳越者 · 2020年6月4日 13:50
+重新安装一次就好了
+
+
+白又白 · 2020年6月4日 14:17
+[root@honest-codes-1 ~]# firewall-cmd –zone=public –list-ports
+FirewallD is not running
+[root@honest-codes-1 ~]# systemctl status firewalld
+● firewalld.service – firewalld – dynamic firewall daemon
+Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
+Active: inactive (dead)
+Docs: man:firewalld(1)
+是不是我的防火墙没开的原因？
+
+
+跳越者 · 2020年6月4日 14:19
+iptables -nL，输出什么？
+
+
+白又白 · 2020年6月4日 14:36
+什么也没输出
+然后我输入了systemctl start firewalld
+服务器就断了
+过了一会，我重新又连接上了
+请问我现在应该怎么操作？
+是重新开启防火墙？
+检查更换端口？
+还是重新装一遍V2ray
+
+
+跳越者 · 2020年6月4日 14:38
+先卸载，然后重装一遍
+
+
+白又白 · 2020年6月4日 15:33
+重新装了后装魔改BBR
+youtube
+Connection Speed 1787 Kbps
+Network Activity 80 KB
+手机 连通性测试200ms
+这速度不是很快啊
+
+
+跳越者 · 2020年6月4日 16:01
+延迟和下载速度没什么关系
+
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合 - V2ray科技 · 2021年3月28日 00:31
+[…] Plus/锐速清参考：安装魔改BBR/BBR […]
+
+购买vultr服务器超详细图文教程 - V2ray科技 · 2021年2月22日 20:18
+[…] 接下来选择服务器操作系统和配置。大多数情形下服务器操作系统请选“centos 7 x64”（注意选CentOS，不是CoreOS！如果想安装锐速或魔改BBR，不要选带BBR的），因为网上大部分教程和脚本都运行在这个系统上。如果是搭梯子上外网，5刀每个月的服务器基本就够用，包含1个cpu，1GB内存和1T流量： […]
+
+v2ray带伪装一键脚本 - V2ray科技 · 2021年2月22日 20:08
+[…] 脚本默认使用BBR技术加速， BBR换成魔改BBR/BBR Plus/锐速清参考：安装魔改BBR/BBR […]
+
+« 上一页12
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+科学上网用的vps和域名的選購
+PC端科学上网常见问题
+深入理解Clash配置文件
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+cloudflare logo
+VPS教程
+人均博客系列一:零成本搭个永久可用的博客
+人均博客系列主要是教你用最低的成本搭个不错的blog,而不是叫你买dmit装Wordpress再套cf等(不可描述)的行为。
+
+樱空桃
+VPS教程
+科学上网用的vps和域名的選購
+本文主要是水文章(ps:warp ipv6分流分到我要死了)説一下科学上网要選購什么,什么適合你?
+
+三上悠亚
+VPS教程
+Warp系列1(warp接管ipv4+ipv6)
+昨天在github找代码，看到一个项目,上面写了: 3：WARP分配的IPV4或者IPV6的IP段，都支持奈非Netflix流媒体，无视VPS原IP限制！ 4：加速VPS到CloudFlare CDN节点访问速度！ 5：避开原VPS的IP需要谷歌验证码问题！ 读后感:真香
+
+本站食用指南隐私政策©2020 V2ray科技
