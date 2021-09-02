@@ -2,6 +2,8 @@
 CentOS系统请输入yum install -y curl，Ubuntu/Debian系统请输入sudo apt install -y curl，然后再次运行上面的命令：
 安装魔改BBR/BBR Plus/锐速(Lotserver)
 根据 v2ray一键脚本 教程安装v2ray，提示重启时按 ctrl+c 中止重启；
+bash <(curl -sL https://s.hijk.art/v2ray.sh)
+自行替換 多合一
 
 2. 安装其他加速内核：wget -N --no-check-certificate "https://raw.githubusercontent.com/hijkpw/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh，界面如下：
 3.2021.03.13更新：推荐使用如下脚本
