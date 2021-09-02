@@ -21,3 +21,14 @@ mod2
 resolve=dig ${DOMAIN} +short
 
 ip=dig ${host} +short
+
+
+先判断 有没有dig
+没有的话，apt安装 dnsutils 和dig
+yum安装bind-utils和dig
+dig好像一早就有的
+
+没装 bind-utils 报错
+bind-utils
+没装 bind-utils
+最後一個不要用
