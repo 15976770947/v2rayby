@@ -32,3 +32,10 @@ dig好像一早就有的
 bind-utils
 没装 bind-utils
 最後一個不要用
+
+
+[Unit]
+Description=V2ray Service
+Documentation=https://hijk.art
+After=network.target nss-lookup.target
+出問題刪除這個試一試嘿嘿嘿
