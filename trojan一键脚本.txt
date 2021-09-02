@@ -1,0 +1,327 @@
+V2ray科技
+
+
+切换导航
+trojan一键脚本
+于2020年3月19日由威龙发布
+使用过程中遇到问题，欢迎到 网络跳越论坛 或 tg群组https://t.me/hijkclub 交流，或关注Youtube频道：网络跳越
+
+2020.11.2更新：支持自定义证书
+
+如果你这周看到本站默默地在更新trojan客户端教程，是不是想到服务端一键脚本也快了？没错，今天正式完成了trojan一键安装脚本，支持CentOS 7/8和Ubuntu 16.04及以上版本，目前已经上传到 Github。
+
+注意：
+
+1. 如果服务器已经有运行网站，请联系网站运维再执行脚本，否则可能导致原来网站无法访问，本人不负责！
+
+2. 对域名没有要求，不管国内还是国外注册的都可以，不需要备案，不会影响使用，也不会带来安全/隐私上的问题；
+
+3. 根据 Namesilo购买域名详细教程 购买的域名，默认@和www在买之前都已经做了解析，因此尽管www已经改成了你服务器的ip，但执行本脚本时可能还会出现“主机未解析到当前服务器IP”的错误。这时只需要换个名称做解析即可，例如 www2；
+
+4. 除非443端口被墙或另有它用，建议使用443！本脚本支持上传自定义证书，可用在NAT VPS上。
+
+5. BBR换成魔改BBR/BBR Plus/锐速清参考：安装魔改BBR/BBR Plus/锐速(Lotserver)；
+
+6. 刚搭建好trojan不要猛上流量，否则可能导致被限速、端口被墙，严重可能ip被墙。
+
+trojan一键脚本使用教程
+1. 请准备一台境外服务器和一个域名。想服务器速度快请参考 搬瓦工VPS购买教程 或从  CN2 GIA VPS商家推荐 选购 ，想ip被封后免费换请参考：购买vultr服务器超详细图文教程。对域名没有要求，国内/国外注册的都可以，不需要备案，不会影响使用，也不会带来安全/隐私上的问题。购买域名可参考：Namesilo购买域名详细教程；
+
+值得一提的是本V2ray一键脚本支持ipv6 only服务器，但是不建议用只有ipv6的VPS用来科学上网。
+
+在NAT VPS运行本脚本请先参考：在NAT VPS上运行本站一键脚本
+
+2. 如果vps运营商开启了防火墙（阿里云、Ucloud、AWS、GCP等默认开启，搬瓦工/hostdare/vultr默认关闭），请先登录vps管理后台放行80和443端口，否则会导致获取证书失败；此外，本脚本支持上传自定义证书，可跳过申请证书这一步，也可用在NAT VPS上。
+
+3. ssh登录到服务器，windows请参考 Bitvise连接Linux服务器教程，mac用户请参考 Mac电脑连接Linux教程。
+
+4. 在终端（黑框框）输入如下命令：
+
+bash <(curl -sL https://s.hijk.art/trojan.sh)
+按回车键，将出现如下操作菜单。如果菜单没出现，CentOS系统请输入 yum install -y curl，Ubuntu/Debian系统请输入 sudo apt install -y curl，然后再次运行上面的命令：
+
+trojan一键脚本菜单
+trojan一键脚本菜单
+
+根据菜单选择操作，其中安装时会要求输入一些信息，请根据提示输入，或者直接回车使用默认值。
+
+接下来脚本会自动疯狂运行，如果安装过程卡住，请耐心等待几分钟；期间网络断开（windows上表现为黑框框中或者顶部标题出现disconnected字样，mac表现为终端出现“closed by remote host”或”broken pipe”），请重新连接后再次执行命令。脚本运行成功会输出配置信息，截图如下：
+
+trojan一键脚本输出结果
+trojan一键脚本输出结果
+
+到此服务端配置完毕，服务器可能会自动重启（没提示重启则不需要），windows终端出现“disconnected”，mac出现“closed by remote host”说明服务器成功重启了。
+
+打开浏览器输入伪装域名，能正常打开伪装站，说明服务端已经正确配置好。
+
+trojan一键脚本注意事项
+1. . 脚本默认使用BBR加速技术，BBR换成魔改BBR/BBR Plus/锐速清参考：安装魔改BBR/BBR Plus/锐速(Lotserver)；
+
+2. 部署好后伪装建站请参考：trojan建站教程；
+
+3. 刚搭建好trojan不要猛上流量，否则可能导致被限速、端口被墙，严重可能ip被墙。
+
+PS：一些常见问题可以参考：一键脚本上遇到的问题
+
+客户端下载
+接下来是科学上网最后一步：
+
+下载  trojan客户端，按照其中的配置教程配置客户端。
+
+一切顺利的话，就可以愉快的上外网了！
+
+参考
+1. trojan教程
+2. trojan-go一键脚本
+
+分类： TROJAN教程
+标签：trojan一键脚本trojan教程
+396 条评论
+
+zsc · 2021年6月28日 17:39
+请问大神，我的torjan一键脚本一直用的好好的，今天中午突然不行了，后台检查已安装，正在运行。重启了一下依然不行，通过v2ranyN测试服务器连接延迟ping 200毫秒，其他测试均提示超时。另外vmess方式上网没有问题，请问改如何解决？
+
+
+威龙 · 2021年6月29日 15:06
+重新运行一键脚本吧
+
+
+zsc990338 · 2021年4月4日 12:21
+已经不支持支付宝支付账单了呀？只能用信用卡或者其他国外支付方式。
+贴上原文 * – AliPay has decided not to allow pre-payments using their processor. Please reach out to them for clarification（支付宝已经决定不允许使用他们的处理器进行预付款。请联系他们澄清）
+
+
+威龙 · 2021年4月4日 12:26
+感觉是你支付宝账号问题
+
+
+yt · 2021年3月15日 21:52
+Failed to set locale, defaulting to C.UTF-8
+/dev/fd/63: line 448: 19714 Killed $CMD_INSTALL epel-release
+Failed to set locale, defaulting to C.UTF-8
+/dev/fd/63: line 448: 20018 Killed $CMD_INSTALL nginx
+Nginx安装失败，请到 https://hijk.art 反馈
+==============================================
+另外，-bash: cerbot: command not found
+这是大佬你上一个脚本里说的手动更新脚本的命令：4. 查看SSL证书：certbot certificates，更新证书：systemctl stop nginx; certbot renew; suystemctl start nginx
+
+但是现在这些命令都运行失败了，大佬您能更新一下吗？
+
+
+威龙 · 2021年3月15日 22:12
+最新的一键脚本不用certbot了，用最新版的脚本吧
+
+
+yt · 2021年3月15日 23:15
+最新的脚本怎么查看证书呢？今天一直提示 certificate verify failed.这就是证书的问题吧……能不能补充一个修复证书的脚本啊。。。或者怎么查看证书有没有问题啊，续签状态。
+
+
+威龙 · 2021年3月15日 23:29
+更新证书：acme.sh —-renew
+查看证书：acme.sh —-list
+
+
+yt · 2021年2月28日 00:41
+您好，谷歌云环境中多次安装失败，提示socat must be installed first.
+
+
+威龙 · 2021年2月28日 08:47
+CentOS系统：yum install -y socat，Ubuntu/Debian：apt install -y socat，然后再运行脚本
+
+
+ling · 2021年2月22日 21:38
+大佬，证书只有90天，请问怎么增加上传自定义证书？
+
+
+威龙 · 2021年2月22日 23:22
+脚本里说了，把证书和密钥按照放到指定文件夹里就可以了
+另外证书会自动续期
+
+
+小毛律 · 2021年1月25日 00:48
+谢谢大佬啊，前一阵有点忙没弄，今天按照你的方法试了一下，结果安装上了却无法启动，重新输入安装脚本显示的又是未安装然后我就放弃了，安装了大佬的另一个trojian-go，目前运行良好，十分感谢
+
+
+jongkhurun · 2021年1月30日 01:25
+我的oracle服务器也出现了这个问题。。。但是trojan-go的客户端支持好像还不是很好 一键ssr也可以用
+
+
+小毛律 · 2021年1月17日 21:27
+[Sun Jan 17 21:22:47 CST 2021] Run post hook:’systemctl restart nginx’
+[Sun Jan 17 21:22:52 CST 2021] Installing key to:/usr/local/etc/trojan/iwanggu617.hopto.org.key
+[Sun Jan 17 21:22:52 CST 2021] Installing full chain to:/usr/local/etc/trojan/iwanggu617.hopto.org.pem
+[Sun Jan 17 21:22:52 CST 2021] Run reload cmd: service nginx force-reload
+Redirecting to /bin/systemctl force-reload nginx.service
+[Sun Jan 17 21:22:53 CST 2021] Reload success
+安装最新版trojan…
+Entering temp directory /tmp/tmp.zBX9xKANFU…
+Downloading trojan 1.16.0…
+############################################################################################################# 100.0%############################################################################################################# 100.0%
+Unpacking trojan 1.16.0…
+Installing trojan 1.16.0 to /usr/local/bin/trojan…
+cp: cannot create regular file ‘/usr/local/bin/trojan’: No such file or directory
+chmod: cannot access ‘/usr/local/bin/trojan’: No such file or directory
+Installing trojan systemd service to /etc/systemd/system/trojan.service…
+Reloading systemd daemon…
+Deleting temp directory /tmp/tmp.zBX9xKANFU…
+Done!
+CentOS Linux 8 (Core) 安装trojan失败，请到 https://hijk.art 反馈
+
+大神你好，这是怎么肥四捏？
+
+
+威龙 · 2021年1月17日 21:32
+你的硬盘满了吧？
+
+
+小毛律 · 2021年1月17日 21:46
+[root@danna ~]# df
+Filesystem 1K-blocks Used Available Use% Mounted on
+devtmpfs 402304 0 402304 0% /dev
+tmpfs 418956 0 418956 0% /dev/shm
+tmpfs 418956 42312 376644 11% /run
+tmpfs 418956 0 418956 0% /sys/fs/cgroup
+/dev/sda2 20754432 3686248 17068184 18% /
+/dev/sda1 204580 7020 197560 4% /boot/efi
+tmpfs 83788 0 83788 0% /run/user/1000
+[root@danna ~]#
+
+哇，大神回复好迅速，太感谢了！
+不过我查了下，应该没满吧，这个情况
+
+
+威龙 · 2021年1月17日 21:47
+rm -rf /usr/local/bin/trojan，然后再试试
+
+
+小毛律 · 2021年1月17日 22:32
+Unpacking trojan 1.16.0…
+Installing trojan 1.16.0 to /usr/local/bin/trojan…
+cp: cannot create regular file ‘/usr/local/bin/trojan’: No such file or directory
+chmod: cannot access ‘/usr/local/bin/trojan’: No such file or directory
+Installing trojan systemd service to /etc/systemd/system/trojan.service…
+Reloading systemd daemon…
+Deleting temp directory /tmp/tmp.2svGsYJbVV…
+Done!
+CentOS Linux 8 (Core) 安装trojan失败，请到 https://hijk.art 反馈
+[root@danna ~]#
+
+还是一样啊。。。
+
+
+威龙 · 2021年1月17日 22:36
+mkdir -p /usr/local/bin，然后再试试
+
+
+小毛律 · 2021年1月17日 21:59
+[root@danna ~]# df
+Filesystem 1K-blocks Used Available Use% Mounted on
+devtmpfs 402304 0 402304 0% /dev
+tmpfs 418956 0 418956 0% /dev/shm
+tmpfs 418956 42312 376644 11% /run
+tmpfs 418956 0 418956 0% /sys/fs/cgroup
+/dev/sda2 20754432 3686248 17068184 18% /
+/dev/sda1 204580 7020 197560 4% /boot/efi
+tmpfs 83788 0 83788 0% /run/user/1000
+
+我重新编辑了一下，这样好看些，麻烦你了大神
+
+
+威龙 · 2021年1月17日 22:00
+rm -rf /usr/local/bin/trojan，然后重新运行一键脚本
+
+
+小毛律 · 2021年1月17日 22:41
+为什么回复之后看不到呢？
+
+运行删除后重装还是一样啊。。。
+
+
+威龙 · 2021年1月17日 22:42
+强制刷新浏览器
+
+
+威龙 · 2021年1月17日 22:20
+已经回复你了，你刷新网页，或者查看邮箱，不用重复回复
+
+
+DawnSeraphine · 2020年12月16日 15:20
+输入指令提示-bash: sudo: command not found
+
+
+威龙 · 2020年12月16日 15:37
+apt install -y sudo，然后再运行命令；或者 apt install -y curl
+
+
+Build · 2020年12月3日 11:12
+想问下 现在v2rayN已经支持trojan了 用这个客户端是否需要更新v2ray的核心？我理解是不用的 只更新v2rayn这个程序就行了。
+
+
+威龙 · 2020年12月3日 11:37
+支持的版本就不需要更新，当然更新也是可以的
+
+v2ray带伪装一键脚本Ubuntu版 - V2ray科技 · 2021年6月10日 10:52
+[…] 3. trojan一键脚本 […]
+
+性价比最高的香港服务器 - V2ray科技 · 2021年5月22日 02:30
+[…] 如果用来科学上网，建议使用伪装，参考 v2ray带伪装一键脚本 和 trojan一键脚本。 […]
+
+trojan客户端下载 - V2ray科技 · 2021年3月5日 17:11
+[…] trojan的缺点在于除了ios平台，没有一个像样的客户端。官方的客户端都比较简陋，使用上较为麻烦。安装trojan请参考：trojan一键脚本 或 trojan-go一键脚本。 […]
+
+手机购买vultr服务器图文教程 - V2ray科技 · 2021年2月22日 20:12
+[…] trojan一键脚本 […]
+
+trojan建站教程 - V2ray科技 · 2021年2月22日 19:59
+[…] trojan一键脚本  […]
+
+Clash for Android配置trojan教程 - V2ray科技 · 2021年2月22日 19:54
+[…] trojan一键脚本 或 […]
+
+trojan-go一键脚本 - V2ray科技 · 2021年2月22日 19:50
+[…] 2. trojan一键脚本 […]
+
+« 上一页1234
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+科学上网用的vps和域名的選購
+PC端科学上网常见问题
+深入理解Clash配置文件
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+收手吧阿祖，外面全是警察
+TROJAN教程
+近期一些现象的提示
+最近是敏感时期，部分人会发现平时好好能上外网，突然就不行了！这又是怎么一回事呢？
+
+qv2ray
+SHADOWSOCKSR教程
+下载qv2ray完全版
+一票人下了qv2ray后，发现只能用vless和vmess，连机埸订阅的入口也没有，最后只能黑qv2ray，how to fix it?
+
+樱空桃
+SHADOWSOCKSR教程
+一键腳本上遇到的問题
+用一键腳本的上可能遇到問题有不少，有些人是老手，一看就知道是甚么問题。但重点是很多不少人是linux新手(wget都不知道是啥)。
+
+本站食用指南隐私政策©2020 V2ray科技
