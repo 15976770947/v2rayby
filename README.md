@@ -14,10 +14,10 @@ wget -N --no-check-certificate "https://github.000060000.xyz/tcpx.sh" && chmod +
 
 第三步，执行下面的命令一键搭建Telegram的MTProto代理：
 
-# CentOS/AliyunOS/AMI系统
+CentOS/AliyunOS/AMI系统
 yum install -y curl
 bash <(curl -sL https://s.hijk.art/mtproto.sh)
-# Ubuntu/Debian系统
+Ubuntu/Debian系统
 apt install -y curl
 bash <(curl -sL https://s.hijk.art/mtproto.sh)
 
