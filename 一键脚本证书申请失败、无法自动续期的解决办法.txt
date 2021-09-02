@@ -1,0 +1,132 @@
+V2ray科技
+
+
+切换导航
+一键脚本证书申请失败、无法自动续期的解决办法
+于2021年6月21日由威龙发布
+近期有网友反馈本站一键脚本无法申请证书，或者证书过期后不会自动续期的问题：
+
+一键脚本申请证书错误
+一键脚本申请证书错误
+
+出现这个问题的原因是acme.sh忽然就把默认CA换成了ZeroSSL，不设置账户邮箱就不让用！
+
+解决问题也很简单，有三种办法：
+
+1. 运行本站最新一键脚本，卸载，然后重装，最简单粗暴的方法！
+
+2. 设置acme.sh使用原来的Let’s Encrypt的CA：acme.sh --set-default-ca --server letsencrypt
+
+3. 注册一下邮箱：acme.sh --register-account -m 你的邮箱
+
+使用上面三种方法的任何一种修复，再次运行一键脚本，问题应该就都解决了！
+
+参考
+V2ray一键脚本
+
+Xray一键脚本
+
+trojan一键脚本
+
+分类： V2RAY教程VPS教程
+标签：acme.sh证书申请失败v2ray一键脚本Xray一键脚本
+12 条评论
+
+seeyou · 2021年8月9日 13:58
+主机先别安装一键脚本，首先注册证书
+命令：
+curl https://get.acme.sh | sh -s email=my@example.com
+或
+wget -O – https://get.acme.sh | sh -s email=my@example.com
+
+以上命令来自acme.sh的GitHub文件说明
+
+
+unaltered · 2021年8月2日 03:31
+脚本安装过程中 由于nginx安装后被启动了 后续设置完成后再次启动提示80被占用 造成脚本报错
+
+手动关闭程序后再运行一次脚本才能正常
+
+
+kid · 2021年7月28日 11:32
+龙哥，安装一件脚本提示其他进程占用了80端口，nginx安装不成功怎么办？
+
+
+威龙 · 2021年7月29日 15:28
+需要把占用80端口的进程关了
+
+
+自由 · 2021年7月7日 15:06
+威龙哥，想问下，最新的一件脚本地址在哪里呀！能方便发个链接吗！感谢！
+
+
+威龙 · 2021年7月7日 19:43
+本站搜一键脚本
+
+
+liuhai · 2021年6月30日 21:33
+威龙哥，我之前一直用你的脚本的v2ray好好的在用，前天突然不行了。我找了vps服务商，他说vps没问题，我重装了vps的系统，再重装了脚本，还是不行。ssh可以连上，但是v2ray就是连不上网，这是咋回事。万分感谢
+
+
+威龙 · 2021年7月1日 16:08
+重新运行一键脚本，不要使用443端口，换一个，比如12345
+
+
+飞翔天仙 · 2021年7月3日 15:55
+老大，最近监控比较狠，换端口之后可能就直接封ip
+
+
+威龙 · 2021年7月3日 19:53
+没有这么严重吧？我一直用的好好的
+
+
+ayam · 2021年6月25日 20:50
+按照上面的方法，还是失败～
+
+
+seeyou · 2021年8月9日 14:01
+使用这个注册：curl https://get.acme.sh | sh -s email=my@example.com
+
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+科学上网用的vps和域名的選購
+PC端科学上网常见问题
+深入理解Clash配置文件
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+cloudflare logo
+VPS教程
+人均博客系列一:零成本搭个永久可用的博客
+人均博客系列主要是教你用最低的成本搭个不错的blog,而不是叫你买dmit装Wordpress再套cf等(不可描述)的行为。
+
+樱空桃
+VPS教程
+科学上网用的vps和域名的選購
+本文主要是水文章(ps:warp ipv6分流分到我要死了)説一下科学上网要選購什么,什么適合你?
+
+三上悠亚
+VPS教程
+Warp系列1(warp接管ipv4+ipv6)
+昨天在github找代码，看到一个项目,上面写了: 3：WARP分配的IPV4或者IPV6的IP段，都支持奈非Netflix流媒体，无视VPS原IP限制！ 4：加速VPS到CloudFlare CDN节点访问速度！ 5：避开原VPS的IP需要谷歌验证码问题！ 读后感:真香
+
+本站食用指南隐私政策©2020 V2ray科技
