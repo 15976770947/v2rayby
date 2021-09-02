@@ -1,0 +1,352 @@
+V2ray科技
+
+
+切换导航
+ShadowsocksR/SSR一键脚本
+于2019年12月22日由威龙发布
+使用过程如果遇到问题，请先仔细参考科学上网常见问题。如果不能解决问题，欢迎到 网络跳越论坛 或 TG群组 https://t.me/hijkclub 交流，或关注Youtube频道：网络跳越
+
+注意：SSR流量目前大概率被精准识别，直接部署SSR可能会导致服务器ip或端口很快被封，新手推荐使用V2ray一键脚本，或Xray一键脚本
+
+今天把CentOS 7/8系统的ShadowsocksR/SSR的一键脚本也补齐了，目前已经上传到 Github。本脚本让您省心省力的在服务器上迅速部署好SSR，并安装BBR加速模块加快访问速度。部署好服务端后，请下载客户端并按照配置教程配置好客户端，就可以愉快的上外网了。
+
+提示：这是自己搭建科学上网环境的第三步，请确认已经做了前两步：
+
+购买服务器。想要服务器速度快请参考：搬瓦工购买服务器详细教程 或从 CN2 GIA VPS和商家推荐 选购，想ip被封后免费换请参考：购买vultr服务器超详细图文教程
+连接到服务器，Windows系统请参考 Bitvise连接Linux服务器教程，mac用户请参考 Mac电脑连接Linux教程
+注意：
+
+如果有域名，强烈建议使用 v2ray带伪装一键脚本，能有效应付近些天的疯狂封杀，提供稳如狗的体验！
+BBR换成魔改BBR/BBR Plus/锐速清参考：安装魔改BBR/BBR Plus/锐速(Lotserver)。
+使用教程
+登录到购买好的Linux服务器（windows可参考 Bitvise连接Linux服务器教程，mac用户请参考 Mac电脑连接Linux教程），在终端（黑框框）里输入如下命令：
+
+bash <(curl -sL https://s.hijk.art/ssr.sh)
+按回车键，屏幕出现“请设置SSR的密码（不输入则随机生成）” 的提示，按照提示设置密码（SSR的密码。例如1234abcd，不是买服务器后台的密码）、端口（SSR的端口，例如12345，不能是22和80）并选择加密方式。
+
+接下来屏幕上开始疯狂出现一堆你看得懂也可能看不懂的东西，如果安装过程中卡住，请耐心等待几分钟；期间网络断开（windows上表现为黑框框中或者顶部标题出现disconnected字样，mac表现为终端出现“closed by remote host”或”broken pipe”），请重新连接后再次执行命令。脚本执行成功后会输出SSR配置，界面如下：
+
+ssr一键脚本
+ssr一键脚本
+
+到此服务端配置完毕，服务器可能会自动重启(没提示重启则不需要)，windows终端出现“disconnected”，mac出现“closed by remote host”说明服务器重启了。
+
+SSR一键脚本做了如下事情：
+
+更新系统到最新版
+安装bbr加速模块
+安装SSR并设置开机启动
+客户端下载
+接下来是科学上网最后一步：下载客户端，并参考页面中的配置教程进行配置：
+
+ShadowsocksR/SSR windows客户端下载
+ShadowsocksR/SSR安卓客户端下载
+ShadowsocksR/SSR mac客户端下载
+ShadowsocksR/SSR ios客户端下载
+下载客户端配置好后，就可以愉快的上外网了！
+
+ 
+
+如果运行过程中遇到问题，请随时在页面留言。
+
+分类： SHADOWSOCKSR教程
+标签：SSR一键脚本
+364 条评论
+
+小白 · 2021年6月21日 21:55
+大佬，请问这个ss 的一键脚本，支持多少用户同时链接？如果有限制的话，请问如何修改成最大支持的数量？
+
+
+威龙 · 2021年6月22日 18:41
+无限
+
+
+小白 · 2021年6月22日 20:26
+大佬，我看ulimit -n 是 1024，这个是影响的对吧，通过操作下面是不是可以提高了，我看 cpu 利用率都只有个位数，同时链接的人数应该在 2000 多
+编辑文件 vim /etc/security/limits.conf 增加以下两行
+
+* soft nofile 51200
+* hard nofile 51200
+编辑配置文件 sudo vim /etc/sysctl.conf,写入如下内容
+
+fs.file-max = 1024000
+#系统所有进程一共可以打开的句柄数(bytes)
+kernel.msgmnb = 65536
+#进程通讯消息队列的最大字节数(bytes)
+kernel.msgmax = 65536
+#进程通讯消息队列单条数据最大的长度(bytes)
+kernel.shmmax = 68719476736
+#内核允许的最大共享内存大小(bytes)
+kernel.shmall = 4294967296
+#任意时间内系统可以使用的共享内存总量(bytes)
+
+net.core.rmem_max = 12582912
+#设置内核接收Socket的最大长度(bytes)
+
+net.core.wmem_max = 12582912
+#设置内核发送Socket的最大长度(bytes)
+
+net.ipv4.tcp_rmem = 10240 87380 12582912
+#设置TCP Socket接收长度的最小值，预留值，最大值(bytes)
+
+net.ipv4.tcp_rmem = 10240 87380 12582912
+#设置TCP Socket发送长度的最小值，预留值，最大值(bytes)
+
+net.ipv4.ip_forward = 1
+#开启所有网络设备的IPv4流量转发，用于支持IPv4的正常访问
+
+net.ipv4.tcp_syncookies = 1
+#开启SYN Cookie，用于防范SYN队列溢出后可能收到的攻击
+
+net.ipv4.tcp_tw_reuse = 1
+#允许将等待中的Socket重新用于新的TCP连接，提高TCP性能
+
+net.ipv4.tcp_tw_recycle = 0
+#禁止将等待中的Socket快速回收，提高TCP的稳定性
+
+net.ipv4.tcp_fin_timeout = 30
+#设置客户端断开Sockets连接后TCP在FIN等待状态的实际(s)，保证性能
+
+net.ipv4.tcp_keepalive_time = 1200
+#设置TCP发送keepalive数据包的频率，影响TCP链接保留时间(s)，保证性能
+
+net.ipv4.tcp_mtu_probing = 1
+#开启TCP层的MTU主动探测，提高网络速度
+
+net.ipv4.conf.all.accept_source_route = 1
+net.ipv4.conf.default.accept_source_route = 1
+#允许接收IPv4环境下带有路由信息的数据包，保证安全性
+
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+#拒绝接收来自IPv4的ICMP重定向消息，保证安全性
+
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.lo.send_redirects = 0
+#禁止发送在IPv4下的ICMP重定向消息，保证安全性
+
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.lo.rp_filter = 0
+#关闭反向路径回溯进行源地址验证(RFC1812)，提高性能
+
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+#忽略所有ICMP ECHO请求的广播，保证安全性
+
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+#忽略违背RFC1122标准的伪造广播帧，保证安全性
+
+net.ipv6.conf.all.accept_source_route = 1
+net.ipv6.conf.default.accept_source_route = 1
+#允许接收IPv6环境下带有路由信息的数据包，保证安全性
+
+net.ipv6.conf.all.accept_redirects = 0
+net.ipv6.conf.default.accept_redirects = 0
+#禁止接收来自IPv6下的ICMPv6重定向消息，保证安全性
+
+net.ipv6.conf.all.autoconf = 1
+#开启自动设定本地连接地址，用于支持IPv6地址的正常分配
+
+net.ipv6.conf.all.forwarding = 1
+#开启所有网络设备的IPv6流量转发，用于支持IPv6的正常访问
+执行 sysctl -e -p 生效
+
+
+威龙 · 2021年6月24日 18:54
+看起来没问题
+
+
+麻花疼 · 2021年5月30日 17:49
+求助，ssr多ip怎么搭建？？可付款！
+
+
+威龙 · 2021年5月30日 17:53
+上网查一下，或者翻翻评论，很简单的
+
+
+未来星 · 2021年1月25日 09:09
+大佬 ShadowsocksR/SSR 能不能搭载windowsserver上
+
+
+威龙 · 2021年1月25日 09:27
+你会用python的话可以
+
+
+a · 2020年12月31日 14:08
+原来逗比根据地有个一键多端口的可惜找不到了
+
+
+威龙 · 2020年12月31日 14:13
+多端口不难，需要可以加上
+
+
+泰森云 · 2021年7月20日 13:53
+逗比一键脚本
+wget -N –no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssrmu.sh && chmod +x ssrmu.sh && bash ssrmu.sh
+
+
+lee · 2020年12月10日 13:46
+Package udns-devel-0.4-3.el7.x86_64 already installed and latest version
+Package libev-devel-4.15-7.el7.x86_64 already installed and latest version
+Package pcre-8.32-17.el7.x86_64 already installed and latest version
+Package pcre-devel-8.32-17.el7.x86_64 already installed and latest version
+Package mbedtls-2.7.17-1.el7.x86_64 already installed and latest version
+Package mbedtls-devel-2.7.17-1.el7.x86_64 already installed and latest version
+Package libsodium-1.0.18-1.el7.x86_64 already installed and latest version
+Package libsodium-devel-1.0.18-1.el7.x86_64 already installed and latest version
+Package c-ares-1.10.0-3.el7.x86_64 already installed and latest version
+Package c-ares-devel-1.10.0-3.el7.x86_64 already installed and latest version
+Nothing to do
+安装SS…
+which: no ss-server in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin)
+–2020-12-10 13:35:41– https://github.com/shadowsocks/shadowsocks-libev/releases/download/v/shadowsocks-libev-.tar.gz
+Resolving github.com (github.com)… 192.30.255.112
+Connecting to github.com (github.com)|192.30.255.112|:443… connected.
+HTTP request sent, awaiting response… 404 Not Found
+2020-12-10 13:35:42 ERROR 404: Not Found.
+
+下载安装文件失败！
+总是这个报错 试了有三十多遍了
+
+
+威龙 · 2020年12月10日 13:48
+抱歉，这个问题应该是脚本问题，晚点我更新一下通知你，然后再试试
+
+
+威龙 · 2020年12月10日 14:18
+如果你安装不了，可能是因为你用的国内服务器，这个脚本不能在国内服务器上使用
+
+
+ppxu · 2020年12月8日 18:59
+你好，请问这个是什么问题，换端口也不行
+
+/dev/fd/63: line 335: /usr/lib/systemd/system/shadowsocksR.service: No such file or directory
+Failed to enable unit: Unit file shadowsocksR.service does not exist.
+Failed to restart shadowsocksR.service: Unit shadowsocksR.service not found.
+SSR启动失败，请检查端口是否被占用！
+
+
+威龙 · 2020年12月8日 19:04
+可能是脚本问题，我看看先
+
+
+ppxu · 2020年12月9日 09:45
+可以了，大佬牛逼
+
+
+威龙 · 2020年12月8日 19:09
+已经修复了，建议过两分钟再试试
+
+
+求知问路人 · 2020年10月31日 15:00
+大佬，这个ssr用xshell 配置，安装完了后，他说运行状态已停止，刚才先试的v2，也是这样，这种情况请问怎么办？
+
+
+威龙 · 2020年10月31日 15:02
+可能是你的商家不允许安装
+
+
+威龙 · 2020年10月31日 15:03
+或者换个端口
+
+
+呼呼 · 2020年10月29日 02:19
+怎么购买节点
+
+
+威龙 · 2020年10月29日 10:58
+本站搜just my socks
+
+
+MDA · 2020年10月26日 13:32
+请问大神为什么每次我的VPS配置好以后过一天以后就会变得无法使用，然后卸载以后换一个端口又可以使用一段时间如此反复
+
+
+威龙 · 2020年10月26日 13:53
+SSR很容易封，建议换v2ray或trojan
+
+
+MDA · 2020年10月27日 11:52
+请问大神这种情况需要去联系VPS客服换一个IP地址么？这算IP被盯上么
+
+
+威龙 · 2020年10月27日 12:05
+不用中转的话，不建议用ssr，换v2ray或者trojan吧
+
+
+ivy · 2020年11月12日 12:55
+老板，一只下载了ssr，只会用，但是搞不定其他购买和配置的菜鸡，有购买服务或者帮扶么………哭唧唧
+
+
+DA · 2020年10月22日 13:29
+大佬 在同一个VPS的服务器下 怎么添加第二个IP
+
+在NAT VPS上运行本站一键脚本 - V2ray科技 · 2021年4月29日 18:30
+[…] NAT VPS是共享公网IP的特殊VPS，一般来说只能使用一万以上的端口号。在NAT VPS运行SS一键脚本、SSR一键脚本，或者搭建V2ray的裸VMESS协议都是没问题的，部署带伪装(TLS)版本的稍微复杂点。 […]
+
+安装魔改BBR/BBR Plus/锐速(Lotserver) - V2ray科技 · 2021年3月13日 17:50
+[…] Shadowsocks/SS一键脚本、ShadowsocksR/SSR一键脚本、v2ray一键脚本、v2ray带伪装一键脚本和trojan一键脚本 […]
+
+ShadowsocksR/SSR windows客户端配置教程 - V2ray科技 · 2021年2月22日 20:17
+[…] ShadowsocksR/SSR一键脚本 或者 […]
+
+获取科学上网服务端信息 - V2ray科技 · 2021年2月22日 20:11
+[…] ShadowsocksR/SSR，请参考：ShadowsocksR/SSR一键脚本 […]
+
+Mac电脑连接Linux教程 - V2ray科技 · 2021年2月22日 20:10
+[…] ShadowsocksR/SSR一键脚本 的配置文件到本地：scp [email protected]:/etc/shadowsocksR.json […]
+
+添加ipv6支持 - V2ray科技 · 2021年2月22日 20:09
+[…] Shadowsocks/SS一键脚本 和 V2Ray一键脚本 默认只监听ipv4地址，而 ShadowsocksR/SSR一键脚本 […]
+
+本站欢迎投稿 - V2ray科技 · 2021年2月22日 19:59
+[…] 去年，某个朋友使用网上的一键脚本部署SSR，发现不能运行在CentOS 8系统上。我出手帮他解决了问题，然后意识到网上许多脚本都是针对CentOS 6/7而写，在今后主流的CentOS 8上可能用不了。 […]
+
+本站脚本资源汇总 - V2ray科技 · 2021年2月22日 19:49
+[…]  SSR一键脚本：还是早期的SSR python版，仅支持CentOS系统； […]
+
+« 上一页1234
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+科学上网用的vps和域名的選購
+PC端科学上网常见问题
+深入理解Clash配置文件
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+qv2ray
+SHADOWSOCKSR教程
+下载qv2ray完全版
+一票人下了qv2ray后，发现只能用vless和vmess，连机埸订阅的入口也没有，最后只能黑qv2ray，how to fix it?
+
+樱空桃
+SHADOWSOCKSR教程
+一键腳本上遇到的問题
+用一键腳本的上可能遇到問题有不少，有些人是老手，一看就知道是甚么問题。但重点是很多不少人是linux新手(wget都不知道是啥)。
+
+V2ray一键脚本
+SHADOWSOCKSR教程
+本站脚本资源汇总
+本文整理了本站成立以来的各种脚本和相关教程，包括V2ray一键脚本、VLESS+TCP+XTLS一键脚本、SSR一键脚本、SS一键脚本、trojan一键脚本和trojan-go一键脚本等，希望对想自己折腾的网友有帮助。
+
+本站食用指南隐私政策©2020 V2ray科技
