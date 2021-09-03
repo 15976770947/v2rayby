@@ -1,0 +1,308 @@
+V2ray科技
+
+
+切换导航
+一键搭建Telegram的MTProto代理
+于2020年10月14日由威龙发布
+如有问题，欢迎到 网络跳越论坛 或 tg群组https://t.me/hijkclub 交流，或关注Youtube频道：网络跳越
+
+MTProto协议介绍
+MTProto协议是 Telegram 为了对抗网络封锁开发的专用代理（MTProxy）协议，目前全平台的 TG 客户端中都支持MTProto协议和MTProxy代理。有了MTProxy代理，即使没有VPN或者其他代理的情况下，也能顺畅访问TG。
+
+本文介绍一键搭建Telegram的MTProto代理。
+
+一键搭建Telegram的MTProto代理
+第一步，请准备一台境外的VPS，购买可参考 CN2 GIA VPS和商家推荐 或 做站VPS推荐，操作系统选 CentOS 7/8、Ubuntu 16/18/20，或者Debian 8/9/10；
+
+第二步，SSH登录到服务器，windows可参考 Bitvise连接Linux服务器教程，mac用户请参考 Mac电脑连接Linux教程；
+
+第三步，执行下面的命令一键搭建Telegram的MTProto代理：
+
+# CentOS/AliyunOS/AMI系统
+yum install -y curl
+bash <(curl -sL https://s.hijk.art/mtproto.sh)
+# Ubuntu/Debian系统
+apt install -y curl
+bash <(curl -sL https://s.hijk.art/mtproto.sh)
+输入命令后，会出现如下菜单：
+
+一键安装MTProto代理
+一键安装MTProto代理
+
+首次使用输入 1，然后回车，按照提示输入一个端口号并回车（端口号随便设置，不和其他软件冲突即可）。
+
+安装成功后，会输出如下信息：
+
+MTProxy代理信息
+MTProxy代理信息
+
+第三步，接下来打开TG客户端，参考 配置Telegram走SS/SSR/V2ray/trojan代理 的操作添加自定义代理，选择MTPROTO，将一键脚本输出的IP、端口和密钥填上去，点击保存：
+
+Telegram配置MTProxy代理
+Telegram配置MTProxy代理
+
+接下来，就可以在不开启代理/VPN的情况下使用TG客户端了。
+
+注意事项
+目前MTProto已经发展到第三代，已经不建议使用V2ray内置的MTProto来搭建
+本脚本使用了 9seconds 的docker镜像搭建；
+因为docker访问外网需求，因此禁用了VPS的防火墙。如果你的VPS用于网站等重要业务，不建议使用本脚本搭建；
+如果有国内VPS，建议使用 中转，防止被封；
+MTProto很可能过一段时间就导致被封，稳妥的方法还是使用带伪装的V2ray或者trojan，然后参考 配置Telegram走SS/SSR/V2ray/trojan代理 的操作使用TG，以及查看 telegram新手教程
+参考
+V2ray带伪装一键脚本
+V2ray的VLESS协议介绍和使用教程
+CN2 GIA VPS和商家推荐
+分类： VPS教程
+标签：MTProto一键脚本MTProto代理MTProto协议MTProxy代理配置telegram
+36 条评论
+
+YEZI · 2021年7月24日 17:47
+请问大佬注意事项1的这句是什么意思呢？
+目前MTProto已经发展到第三代，已经不建议使用V2ray内置的MTProto来搭建
+
+
+威龙 · 2021年7月25日 22:46
+就是tg代理挂的快，要么直接用v2ray，要么用原生mtproto
+
+
+qq · 2021年5月13日 13:56
+大老你的脚本什么时候能用了。很多人等着你的更新
+
+CentOS Linux 7 (Core) 启动docker镜像失败了
+CentOS Linux 8 (Core) 启动docker镜像失败了
+Debian GNU/Linux 10 (buster) 启动docker镜像失败，请到 https://hijk.art 反馈
+Debian GNU/Linux 9 (stretch) 启动docker镜像失败，请到 https://hijk.art 反馈
+Ubuntu 18.04 LTS 启动docker镜像失败，请到 https://hijk.art 反馈
+
+
+威龙 · 2021年5月13日 13:58
+晚上给解决方案
+
+
+威龙 · 2021年5月13日 15:15
+脚本不能使用问题已经修复
+
+
+qq · 2021年5月13日 23:11
+可以用了。谢谢大佬
+
+
+qq · 2021年5月9日 16:27
+大老你好
+CentOS Linux 7 (Core) 启动docker镜像失败了
+
+
+威龙 · 2021年5月9日 22:52
+可能是新版问题，有空我看看
+
+
+qq · 2021年5月8日 15:43
+正在安装 : containerd.io-1.4.4-3.1.el7.x86_64 14/16
+正在安装 : docker-ce-rootless-extras-20.10.6-3.el7.x86_64 15/16
+正在安装 : 3:docker-ce-20.10.6-3.el7.x86_64 16/16
+验证中 : libsemanage-python-2.5-14.el7.x86_64 1/16
+验证中 : fuse3-libs-3.6.1-4.el7.x86_64 2/16
+验证中 : docker-ce-rootless-extras-20.10.6-3.el7.x86_64 3/16
+验证中 : fuse-overlayfs-0.7.2-6.el7_8.x86_64 4/16
+验证中 : policycoreutils-python-2.5-34.el7.x86_64 5/16
+验证中 : 3:docker-ce-20.10.6-3.el7.x86_64 6/16
+验证中 : docker-scan-plugin-0.7.0-3.el7.x86_64 7/16
+验证中 : slirp4netns-0.4.3-4.el7_8.x86_64 8/16
+验证中 : 2:container-selinux-2.119.2-1.911c772.el7_8.noarch 9/16
+验证中 : python-IPy-0.75-6.el7.noarch 10/16
+验证中 : checkpolicy-2.5-8.el7.x86_64 11/16
+验证中 : 1:docker-ce-cli-20.10.6-3.el7.x86_64 12/16
+验证中 : containerd.io-1.4.4-3.1.el7.x86_64 13/16
+验证中 : audit-libs-python-2.8.5-4.el7.x86_64 14/16
+验证中 : setools-libs-3.3.8-4.el7.x86_64 15/16
+验证中 : libcgroup-0.41-21.el7.x86_64 16/16
+
+已安装:
+containerd.io.x86_64 0:1.4.4-3.1.el7 docker-ce.x86_64 3:20.10.6-3.el7 docker-ce-cli.x86_64 1:20.10.6-3.el7
+
+作为依赖被安装:
+audit-libs-python.x86_64 0:2.8.5-4.el7 checkpolicy.x86_64 0:2.5-8.el7 container-selinux.noarch 2:2.119.2-1.911c772.el7_8
+docker-ce-rootless-extras.x86_64 0:20.10.6-3.el7 docker-scan-plugin.x86_64 0:0.7.0-3.el7 fuse-overlayfs.x86_64 0:0.7.2-6.el7_8
+fuse3-libs.x86_64 0:3.6.1-4.el7 libcgroup.x86_64 0:0.41-21.el7 libsemanage-python.x86_64 0:2.5-14.el7
+policycoreutils-python.x86_64 0:2.5-34.el7 python-IPy.noarch 0:0.75-6.el7 setools-libs.x86_64 0:3.3.8-4.el7
+slirp4netns.x86_64 0:0.4.3-4.el7_8
+
+完毕！
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+mtg: error: unknown flag -c, did you mean one of “-h”, “-v”, “-x”?
+mtg: error: : “/” exists but is a directory
+mtg: error: : “/” exists but is a directory
+mtg: error: : “/” exists but is a directory
+CentOS Linux 7 (Core) 启动docker镜像失败，请到 https://hijk.art 反馈
+
+
+qq · 2021年4月18日 09:42
+centos 7.9 上加装了BBR再行安装MTProto代理每次重启vps都需要人手 4. 启动MTProto代理。否则显示 当前状态：已安装 未运行。请问如何是好
+
+
+威龙 · 2021年4月18日 09:43
+等我有空改一下脚本
+
+
+qq · 2021年5月7日 20:09
+作为依赖被安装:
+audit-libs-python.x86_64 0:2.8.5-4.el7 checkpolicy.x86_64 0:2.5-8.el7 container-selinux.noarch 2:2.119.2-1.911c772.el7_8
+docker-ce-rootless-extras.x86_64 0:20.10.6-3.el7 docker-scan-plugin.x86_64 0:0.7.0-3.el7 fuse-overlayfs.x86_64 0:0.7.2-6.el7_8
+fuse3-libs.x86_64 0:3.6.1-4.el7 libcgroup.x86_64 0:0.41-21.el7 libsemanage-python.x86_64 0:2.5-14.el7
+policycoreutils-python.x86_64 0:2.5-34.el7 python-IPy.noarch 0:0.75-6.el7 setools-libs.x86_64 0:3.3.8-4.el7
+slirp4netns.x86_64 0:0.4.3-4.el7_8
+
+完毕！
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+mtg: error: unknown flag -c, did you mean one of “-h”, “-v”, “-x”?
+mtg: error: : “/” exists but is a directory
+mtg: error: : “/” exists but is a directory
+mtg: error: : “/” exists but is a directory
+mtg: error: : “/” exists but is a directory
+mtg: error: : “/” exists but is a directory
+CentOS Linux 7 (Core) 启动docker镜像失败，请到 https://hijk.art 反馈
+
+
+威龙 · 2021年5月7日 20:21
+重新试试
+
+
+小鸟酱 · 2021年4月15日 02:24
+CentOS 启动失败
+
+
+威龙 · 2021年4月15日 11:09
+没有其他信息了？
+
+
+mtproto · 2021年4月5日 23:09
+安装docker的时候出错，请问如何处理呢？
+![WechatIMG61.png](https://i.loli.net/2021/04/05/pBiq4VTDnhxA6K9.png)
+
+
+威龙 · 2021年4月5日 23:12
+看起来是系统资源不足
+
+
+mtproto · 2021年4月23日 12:03
+4、5个月前试过是ok，现在不知道为何弹错docker: Error response from daemon: OCI runtime create failed: container_linux.go:367: starting container process caused: process_linux.go:495: container init caused: process_linux.go:396: setting rlimits for ready process caused: error setting rlimit type 7: operation not permitted: unknown.
+Debian GNU/Linux 10 (buster) 启动docker镜像失败，请到 https://hijk.art 反馈
+
+
+威龙 · 2021年4月23日 12:04
+换个系统
+
+
+timothy · 2021年4月10日 14:19
+请问这是TLS混淆的么
+
+
+威龙 · 2021年4月10日 15:32
+不是
+
+
+timothy · 2021年4月4日 23:48
+为什么我的密匙很长很长不是32的啊MTProxy Admin Bot, [04.04.21 23:43]
+Incorrect secret value. It must contain 32 hex characters like
+00112233445566778899aabbccddeeff.
+
+
+威龙 · 2021年4月5日 23:11
+可能版本不同
+
+
+timothy · 2021年4月8日 16:27
+感谢博主，我已经按照博主的教程成功装好了，并使用了，很稳定，但是我看了你的注意事项，我还是担心我买的搬瓦工IP被墙，我专门买的来给我们一个小团体用的，目前大约百人左右，请问博主能教我较为不会被墙的方法吗，我主要是因为不能给每台手机安装Trojan客户端，所以选择了电报自带的MTProton代理，博主能教我么，可以回复我的邮箱
+
+
+timothy · 2021年4月8日 16:28
+我只要保证这个VPS能让我们的电报持续稳定的联络就好了，不是买来做翻墙工具的
+
+
+威龙 · 2021年4月8日 16:40
+想要稳的话买个国内服务器中转
+
+
+timothy · 2021年4月8日 17:20
+请问如何操作，求指导
+
+
+timothy · 2021年4月8日 17:33
+是上面的中转里面的介绍么？我似乎买不到NAT vps 阿里的NAT 网关是这个么？1000多一年这么贵么？
+
+
+peter · 2021年2月28日 12:05
+甲骨文默认自己不带sudo
+
+
+威龙 · 2021年2月28日 12:23
+那你用su切换到root再操作
+
+
+GebideWang · 2021年2月8日 20:27
+2021/2/8,GCP(Ubuntu18)安装成功，使用正常。
+
+
+NaN · 2021年1月31日 12:02
+提示：CentOS Linux 8 docker安装失败，请到https://hijk.art反馈
+
+
+威龙 · 2021年1月31日 12:14
+试试手动安装docker
+
+
+NaN · 2021年1月31日 17:55
+谢谢。我试试
+
+
+游客 · 2020年12月19日 15:39
+提示：Ubuntu 16.04.7 LTS docker安装失败，请到https://hijk.art反馈
+
+
+威龙 · 2020年12月19日 15:46
+升级系统到新版本
+
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+深入理解Clash配置文件
+科学上网用的vps和域名的選購
+近期一些现象的提示
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+cloudflare logo
+VPS教程
+人均博客系列一:零成本搭个永久可用的博客
+人均博客系列主要是教你用最低的成本搭个不错的blog,而不是叫你买dmit装Wordpress再套cf等(不可描述)的行为。
+
+樱空桃
+VPS教程
+科学上网用的vps和域名的選購
+本文主要是水文章(ps:warp ipv6分流分到我要死了)説一下科学上网要選購什么,什么適合你?
+
+三上悠亚
+VPS教程
+Warp系列1(warp接管ipv4+ipv6)
+昨天在github找代码，看到一个项目,上面写了: 3：WARP分配的IPV4或者IPV6的IP段，都支持奈非Netflix流媒体，无视VPS原IP限制！ 4：加速VPS到CloudFlare CDN节点访问速度！ 5：避开原VPS的IP需要谷歌验证码问题！ 读后感:真香
+
+本站食用指南隐私政策©2020 V2ray科技
