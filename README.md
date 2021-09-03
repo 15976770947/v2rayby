@@ -1,3 +1,6 @@
+#  原作者项目 
+https://github.com/15976770947/scripts
+
 # v2rayby
 hostip.php 重要文件验证域名于对其ip 失效了添加上去替换即可
 如果脚本发现未找到Dig命令，可能需要安装bind-utils[centos系统]，或者[Debain系统]dnsutils，安装完成再执行脚本
