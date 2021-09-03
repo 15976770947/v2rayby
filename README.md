@@ -37,3 +37,13 @@ bash -c "$(curl -sS https://gitee.com/fhcloud/lighthouse_serviceuninstall/raw/ma
 
 互聯網時光機歷史網站
 https://web.archive.org/web/20210902033525/https://v2raytech.com/bye-bye/
+#   证书自动申请失败
+解决问题也很简单，有三种办法：
+
+1. 运行本站最新一键脚本，卸载，然后重装，最简单粗暴的方法！
+
+2. 设置acme.sh使用原来的Let’s Encrypt的CA：acme.sh --set-default-ca --server letsencrypt
+
+3. 注册一下邮箱：acme.sh --register-account -m 你的邮箱
+
+使用上面三种方法的任何一种修复，再次运行一键脚本，问题应该就都解决了！
