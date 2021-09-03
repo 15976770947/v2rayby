@@ -1,6 +1,8 @@
+
 #  原作者项目 
 https://github.com/15976770947/scripts
 https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
+互聯網時光機歷史網站 https://web.archive.org/web/20210902033525/https://v2raytech.com/bye-bye/
 
 # v2rayby
 hostip.php 重要文件验证域名于对其ip 失效了添加上去替换即可
