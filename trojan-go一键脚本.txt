@@ -1,0 +1,384 @@
+V2ray科技
+
+
+切换导航
+trojan-go一键脚本
+于2020年10月18日由威龙发布
+使用过程中遇到问题，欢迎到 网络跳越论坛 或 tg群组https://t.me/hijkclub 交流，或关注Youtube频道：网络跳越
+
+trojan-go介绍
+trojan-go 是使用Go语言实现的完整trojan代理，兼容原版的绝大多数功能，并且具有使用简易、快速部署使用等优点。trojan-go支持多路复用、路由功能、websocket（CDN中转）、Shadowsocks混淆二次混淆，多平台，无依赖，性能也很强悍，推荐使用。
+
+trojan-go一键脚本使用说明
+trojan-go一键脚本可运行在CentOS 7/8、Ubuntu 16/18/20、Debian 8/9/10等主流系统上，并且支持自定义域名证书（需放置在/root目录下并命名为trojan-go.pem和trojan-go.key）。
+
+trojan-go一键脚本使用步骤如下：
+
+1. 请准备一台境外服务器。想服务器速度快请参考 搬瓦工VPS购买教程 或从  CN2 GIA VPS商家推荐 选购，想ip被封后免费换请参考：购买vultr服务器超详细图文教程。
+
+此外还需要一个域名。对域名没有要求，国内/国外注册的都可以，不需要备案，不会影响使用，也不会带来安全/隐私上的问题。购买域名可参考：Namesilo购买域名详细教程。
+
+值得一提的是本V2ray一键脚本支持ipv6 only服务器，但是不建议用只有ipv6的VPS用来科学上网。
+
+在NAT VPS运行本脚本请先参考：在NAT VPS上运行本站一键脚本
+
+2. 如果vps运营商开启了防火墙（阿里云、Ucloud、腾讯云、AWS、GCP等商家默认有，搬瓦工/hostdare/vultr等商家默认关闭），请先登录vps管理后台放行80和443端口，否则可能会导致获取证书失败。此外，本脚本支持上传自定义证书，可跳过申请证书这一步，也可用在NAT VPS上。
+
+3. ssh连接到服务器。Windows系统请参考 Bitvise连接Linux服务器教程，mac用户请参考 Mac电脑连接Linux教程。
+
+4. 复制（或手动输入）下面命令到终端：
+
+bash <(curl -sL https://s.hijk.art/trojan-go.sh)
+按回车键，将出现如下操作菜单。如果菜单没出现，CentOS系统请输入 yum install -y curl，Ubuntu/Debian系统请输入 sudo apt install -y curl，然后再次运行上面的命令：
+
+trojan-go一键脚本菜单
+trojan-go一键脚本菜单
+
+注意：如果服务器上有网站在运行，请联系运维再执行脚本，否则可能导致原来网站无法访问！
+
+5. WS版本能使用CDN中转，如果你有经过CDN中转需求请选择2，期间需要设置WS路径。按照自己的需求选择一个方式。例如1，然后回车。接着脚本会让你输入一些信息，也可以直接按回车使用默认值。
+
+6. 接下来脚本会自动运行，如果安装过程卡住，请耐心等待几分钟；期间网络断开（windows上表现为黑框框中或者顶部标题出现disconnected字样，mac表现为终端出现“closed by remote host”或”broken pipe”），请重新连接后再次执行命令。脚本运行成功会输出配置信息，截图如下：
+
+trojan-go一键脚本输出配置信息
+trojan-go一键脚本输出配置信息
+
+到此服务端配置完毕，服务器可能会自动重启（没提示重启则不需要），windows终端出现“disconnected”，mac出现“closed by remote host”说明服务器成功重启了。
+
+打开浏览器输入伪装域名，能正常打开伪装站，说明服务端已经正确配置好。
+
+trojan-go一键脚本注意事项
+1. 如果想上cdn（必须是WS版才可以），请操作完后再参考：使用cloudflare中转流量，拯救被墙ip；
+
+2. 脚本默认使用BBR加速技术，BBR换成魔改BBR/BBR Plus/锐速清参考：安装魔改BBR/BBR Plus/锐速(Lotserver)；
+
+3. 部署好后伪装建站请参考：trojan-go伪装建站教程；
+
+4. 刚搭建好trojan-go不要猛上流量，否则可能导致被限速、端口被墙，严重可能ip被墙。
+
+PS：一些常见问题可以参考：一键脚本上遇到的问题
+
+trojan-go客户端下载
+请参考 trojan-go客户端下载。
+
+参考
+1. trojan教程
+
+2. trojan一键脚本
+
+分类： TROJAN教程
+标签：trojan-gotrojan-go一键脚本trojan一键脚本
+55 条评论
+
+謬紗特 · 2021年6月8日 23:49
+root判断里可以加一条`用户id=0(root)`
+语言改成中文的时候id会输出汉字(((
+随手找到的bug,不修也没什么大问题((
+
+
+謬紗特 · 2021年6月8日 23:50
+隔壁那个v2ray.sh也是
+
+
+威龙 · 2021年6月8日 23:59
+感谢反馈
+
+
+miao · 2021年4月18日 16:53
+Create new order error. Le_OrderFinalize not found. {
+“type”: “urn:ietf:params:acme:error:rateLimited”,
+“detail”: “Error creating new order :: too many certificates already issued for exact set of domains: : see https://letsencrypt.org/docs/rate-limits/“,
+“status”: 429
+}
+[Sun 18 Apr 2021 04:51:22 AM EDT] Please add ‘–debug’ or ‘–log’ to check more details.
+[Sun 18 Apr 2021 04:51:22 AM EDT] See: https://github.com/acmesh-official/acme.sh/wiki/How-to-debug-acme.sh
+[Sun 18 Apr 2021 04:51:22 AM EDT] Run post hook:’systemctl restart nginx’
+获取证书失败，请复制上面的红色文字到 https://hijk.art 反馈
+
+
+威龙 · 2021年4月18日 16:54
+域名申请太多次证书，换一个二级域名
+
+
+Jerry · 2021年3月28日 13:06
+安装一键trojan-go之后，伪装网站可以打开。clash x有延迟显示。但是没法访问外网，而且看您的clash控制台-设置-代理模式-规则 http端口是7890.而我的是0.但是还没法修改
+
+
+威龙 · 2021年3月28日 13:38
+客户端配置有问题，不懂的话建议换个客户端
+
+
+anthony · 2021年3月22日 11:41
+使用ws,通过api ,流量不更新
+不使用ws,流量又是更新的
+麻烦这能解决么
+
+
+威龙 · 2021年3月22日 15:22
+抱歉，没用过api功能
+
+
+anthony · 2021年3月13日 10:10
+重启trojan-go,通过api,用户就会消失,这要怎么弄
+
+
+威龙 · 2021年3月13日 10:44
+这个功能没用过，不清楚
+
+
+2333 · 2021年2月2日 20:40
+Please install socat tools first.
+[Tue Feb 2 20:32:42 CST 2021] _on_before_issue.
+获取证书失败，请复制上面的红色文字到 https://hijk.art 反馈
+
+安装过程中出现这个，大佬能否帮忙看下
+
+
+威龙 · 2021年2月2日 20:48
+CentOS系统：yum install -y socat，Debian/Ubuntu系统：apt install -y socat，然后再运行一键脚本
+
+
+TT · 2021年1月29日 22:15
+安装过程中出现下面的错误
+
+******.***:Verify error:Fetching http://******.***/.well-known/acme-challenge/Kgrj6FBcUJKF7EwDt9EchtaKHu6QcW42gOy1x65HDGg: Connection refused
+
+See: https://github.com/acmesh-official/acme.sh/wiki/How-to-debug-acme.sh
+
+Run post hook:’systemctl restart nginx’
+获取证书失败，请复制上面的红色文字到 https://hijk.art 反馈
+
+这咱情况要怎么办
+
+
+威龙 · 2021年1月29日 22:20
+vps的网页防火墙没开，或者dns解析没生效
+
+
+迷路的科学家 · 2021年1月11日 11:50
+感谢大佬，元旦更新的代码很好用，唯一一个问题是伪装美女站的时候，最后一个标签页原网址是xr.imzeizi.me,会被替换为类似于xr.abc.def.ghi的地址，不像前面页面都是替换成了abc.def.ghi/xxx，从而该秀人页面无法访问，试了在域名解析里面添加xr.abc.def.ghi的解析到abc.def.ghi相同IP也是无法访问。后来注释掉 sub_filter “imeizi.me” “abc.def.ghi”之后，点击该页面可以访问了，但没有伪装，直接访问的是xr.imzeizi.me这个页面。
+
+
+迷路的科学家 · 2021年1月11日 17:06
+另外为了防止原网站崩了，我把图片打包下载到了我的NAS里，感谢分享。哈哈
+
+
+威龙 · 2021年1月11日 19:30
+这个问题我已经修复了，重新运行一键脚本不会出现这个问题
+
+
+111 · 2021年1月11日 20:19
+唉，早晚被大佬坑到jing jin ren wang
+
+
+1111 · 2020年12月12日 14:21
+大佬 我是在nat上使用acme签发的证书 但是却报错了 请问该修改哪里呢
+这个是报错日志
+c 12 01:19:11 hkt-n1-b1-4174.hkt-n1.anyhk.xyz trojan-go[20483]: [INFO] 2020/12/12 01:19:11 trojan-go v0.8.2 initializing
+Dec 12 01:19:11 hkt-n1-b1-4174.hkt-n1.anyhk.xyz trojan-go[20483]: [FATAL] 2020/12/12 01:19:11 github.com/p4gefau1t/trojan-go/proxy.(*Node).BuildNext:stack.go:29 tls failed to load key pair
+Dec 12 01:19:11 hkt-n1-b1-4174.hkt-n1.anyhk.xyz systemd[1]: trojan-go.service: main process exited, code=exited, status=1/FAILURE
+Dec 12 01:19:11 hkt-n1-b1-4174.hkt-n1.anyhk.xyz systemd[1]: Unit trojan-go.service entered failed state.
+Dec 12 01:19:11 hkt-n1-b1-4174.hkt-n1.anyhk.xyz systemd[1]: trojan-go.service failed.
+[root@hkt-n1-b1-4174 ~]#
+
+
+威龙 · 2020年12月12日 14:31
+用pem格式证书，key文件和证书文件不要搞混了
+
+
+腐烂的葉子 · 2020年12月9日 23:22
+请问此脚本可以和有伪装的xray同时用吗
+
+
+威龙 · 2020年12月9日 23:43
+可以，但是端口得不同，不是很建议
+
+
+Rlzxcz · 2020年12月5日 19:25
+感谢大佬!想问一下安装完之后报错 Cannot open netlink socket: Protocol not supported 怎么解决?
+
+
+威龙 · 2020年12月5日 19:28
+这个问题我没遇到过，貌似是openwrt上出现的？
+
+
+Rlzxcz · 2020年12月5日 19:34
+不是，是尝试启动trojan服务的时候出现的
+Cannot open netlink socket: Protocol not supported
+Cannot open netlink socket: Protocol not supported
+Cannot open netlink socket: Protocol not supported
+
+trojan-go配置信息：
+
+当前状态：Cannot open netlink socket: Protocol not supported
+已安装 未运行
+IP：100.000.000.004
+伪装域名/主机名(host)：xxx.xxxxxxx.xxx
+端口(port)：443
+密码(password)：12312312313
+
+
+威龙 · 2020年12月5日 19:35
+什么系统？
+
+
+Rlzxcz · 2020年12月5日 19:36
+Debian 10.0 X86 64
+
+
+威龙 · 2020年12月5日 19:40
+这个之前还真没遇到过，建议试试更新系统，或者换其他版本
+
+
+Rlzxcz · 2020年12月5日 19:48
+大佬推荐用什么系统啊?
+
+
+威龙 · 2020年12月5日 19:49
+脚本都在Centos系统下测试过，用这个系统基本没问题的
+
+
+Rlzxcz · 2020年12月5日 19:51
+啊这，我那个VPS商提供的CentOS抽风的。Ubuntu可以吗
+
+
+威龙 · 2020年12月5日 19:51
+可以的
+
+
+迷路的科学家 · 2020年11月29日 11:04
+最新版的/etc/nginx/conf.d/****.conf貌似有点问题，伪装网站那一段代码导致nginx一直没法启动，换成
+location / {
+return 301 https://$server_name:443$request_uri;
+}
+
+location = /robots.txt {
+}
+}
+旧版安装时相同的就好了
+
+
+威龙 · 2020年11月29日 11:09
+感谢反馈
+
+
+最早 · 2020年11月19日 16:20
+大佬啥时候 搞个完整教材呀 没使用教程太难搞了
+
+
+woods · 2020年11月12日 10:56
+“3. 除非443端口被墙或另有它用，建议使用443！本脚本支持上传自定义证书，可用在NAT VPS上”…….请问, 非lets encrypt的证书, 可以吗? 我试了多种方法LE证书都有故障申请失败, 于是手动申请了freessl trustasia的证书, 有了证书文件
+
+
+威龙 · 2020年11月12日 11:44
+可以，上传即可，主要是文件名要对
+
+
+daniel · 2020年11月9日 00:26
+请问现在L大的LEDE固件，是不是不支持 Trojan-go，我通过脚本配置好服务器端，查看日志也没报错，但是路由器配好对应的参数，无法使用。
+
+
+威龙 · 2020年11月9日 08:49
+不清楚，没用过
+
+
+小鱼塘 · 2020年11月7日 13:30
+大佬，用vultr搭建好trojan-go并做了伪站用，两天速度很好能上四五万，看4k很流畅；随后一直流量很小最高300K不到，然后换了几个IP一样情况；这情况是电信或移动还是vps服务商限流的，请问有什么方法解决限流问题？
+
+
+威龙 · 2020年11月7日 13:32
+运营商问题，但是有可能是周末上外网的人多，网速慢下来了
+
+
+小鱼塘 · 2020年11月7日 13:43
+好的，谢谢解答，这情况会不会是被墙了？
+
+
+威龙 · 2020年11月7日 13:53
+不是
+
+
+null · 2020年11月4日 01:46
+大佬 trojan-go 什么时候出建站的脚本啊
+
+
+威龙 · 2020年11月4日 10:09
+等有空吧
+
+
+一个困惑者 · 2020年10月27日 12:39
+感谢大佬的奉献！不过我想问的是，go一键脚本有没有对应的建站脚本呢？现在急需啊，毕竟go脚本可以自定义域证书太棒了！！！！！拜托大佬鼎力相助！
+
+
+威龙 · 2020年10月27日 12:51
+目前尚未支持，后续可以加入
+
+
+飞翔天仙 · 2020年10月27日 12:19
+这个go一键脚本，怎么不支持建站哪？？？？
+
+
+威龙 · 2020年10月27日 12:51
+目前没做建站脚本
+
+
+JohnAppleseed · 2020年10月19日 23:31
+感谢大佬的教程！想请问一下安装完毕后显示当前状态：已安装 未运行，选择启动trojan-go后显示Job for nginx.service failed because the control process exited with error code. See “systemctl status ng
+inx.service” and “journalctl -xe” for details.该如何解决？非常感谢！
+
+
+威龙 · 2020年10月20日 13:28
+nginx -t，看看出现什么
+
+trojan一键脚本 - V2ray科技 · 2021年6月10日 10:51
+[…] 1. trojan教程 2. trojan-go一键脚本 […]
+
+搬瓦工VPS购买教程 - V2ray科技 · 2021年4月4日 11:00
+[…] trojan-go一键脚本 […]
+
+trojan客户端下载 - V2ray科技 · 2021年3月18日 18:40
+[…] trojan的缺点在于除了ios平台，没有一个像样的客户端。官方的客户端都比较简陋，使用上较为麻烦。安装trojan请参考：trojan一键脚本 或 trojan-go一键脚本。 […]
+
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+深入理解Clash配置文件
+科学上网用的vps和域名的選購
+近期一些现象的提示
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+收手吧阿祖，外面全是警察
+TROJAN教程
+近期一些现象的提示
+最近是敏感时期，部分人会发现平时好好能上外网，突然就不行了！这又是怎么一回事呢？
+
+qv2ray
+SHADOWSOCKSR教程
+下载qv2ray完全版
+一票人下了qv2ray后，发现只能用vless和vmess，连机埸订阅的入口也没有，最后只能黑qv2ray，how to fix it?
+
+樱空桃
+SHADOWSOCKSR教程
+一键腳本上遇到的問题
+用一键腳本的上可能遇到問题有不少，有些人是老手，一看就知道是甚么問题。但重点是很多不少人是linux新手(wget都不知道是啥)。
+
+本站食用指南隐私政策©2020 V2ray科技
