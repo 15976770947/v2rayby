@@ -16,6 +16,8 @@ bbr其他更多功能脚本【推荐这个】
 wget -N --no-check-certificate "https://github.000060000.xyz/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
 
 支持更多内核和选项
+#  v2ray多合一脚本
+bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh)
 #   安装教程
 CentOS系统请输入yum install -y curl，Ubuntu/Debian系统请输入sudo apt install -y curl，然后再次运行上面的命令：
 安装魔改BBR/BBR Plus/锐速(Lotserver)
