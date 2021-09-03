@@ -6,7 +6,9 @@ ip=curl -sL https://hijk.art/hostip.php?d=${host}
 
 
 
-
+这些都是ip域名检测是不是属于本vpsip 第三  不用检测直接过
+第一个需要过 代码在开源那里
+第2个没有试
 
 
 mod1
@@ -47,3 +49,4 @@ https://github.com/acmesh-official/acme.sh
 地址跟脚本一起
 脚本里面有这个地址的  https://get.acme.sh
 hijk.pw@protonmail.ch
+这个是申请证书 脚本绑定的 有问题再去项目解决
