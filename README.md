@@ -1,4 +1,5 @@
-
+#  原作者时光机项目保存
+https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
 #  原作者项目 
 https://github.com/15976770947/scripts
 https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
