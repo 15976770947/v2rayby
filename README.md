@@ -3,7 +3,7 @@
 https://github.com/15976770947/scripts
 https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
 互聯網時光機歷史網站 https://web.archive.org/web/20210902033525/https://v2raytech.com/bye-bye/
-
+作者官網#https://v2raytech.com/
 # v2rayby
 hostip.php 重要文件验证域名于对其ip 失效了添加上去替换即可
 如果脚本发现未找到Dig命令，可能需要安装bind-utils[centos系统]，或者[Debain系统]dnsutils，安装完成再执行脚本
