@@ -1,0 +1,99 @@
+V2ray科技
+
+
+切换导航
+阿里云卸载云盾/安骑士
+于2020年6月24日由威龙发布
+阿里云盾（AliYunDun），又叫阿里云安骑士，是阿里云官方镜像自带的云监控软件，能监控阿里云服务器状态和运行进程，并将部分数据上报给阿里云后台。阿里云盾不仅对cpu、带宽、硬盘占用过高发出预警，也会检测科学上网进程，然后发送违规警告给用户。如果阿里云服务器用来科学上网，建议卸载云盾。
+
+下面是卸载阿里云盾/安骑士的一键脚本：
+
+wget http://update.aegis.aliyun.com/download/uninstall.sh
+chmod +x uninstall.sh
+./uninstall.sh
+rm -rf uninstall.sh
+wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh
+chmod +x quartz_uninstall.sh
+./quartz_uninstall.sh
+rm -rf quartz_uninstall.sh
+pkill aliyun-service
+rm -fr /etc/init.d/agentwatch /usr/sbin/aliyun-service
+rm -rf /usr/local/aegis*
+卸载完成后，ps aux | grep aeg | grep -v grep 应该输出为空。
+
+该脚本可多次运行，不会有什么后遗症。
+
+分类： VPS教程
+标签：卸载安骑士卸载阿里云盾
+7 条评论
+
+游魂 · 2020年8月27日 17:58
+执行该脚本一半后，阿里云已拦截并发送通知：您的服务器：***IP出现了：恶意破坏客户端文件 ，云安全中心已为您主动拦截成功，欢迎您登录控制台在安全告警-精准防御中查看处置详情。
+
+然后ps aux | grep aeg | grep -v grep有输出
+
+
+跳越者 · 2020年8月27日 18:29
+到网页后台关闭云盾
+
+
+RYlo · 2020年8月8日 11:07
+执行该脚本一半后，阿里云已拦截并发送通知
+
+
+跳越者 · 2020年8月8日 15:20
+发送什么通知？
+
+
+RYlo · 2020年10月5日 18:30
+同上，发送时没注意看上面的评论
+
+腾讯云监控软件一键卸载脚本 - V2ray科技 · 2021年2月22日 19:52
+[…] 阿里云卸载云盾一键脚本 […]
+
+本站脚本资源汇总 - V2ray科技 · 2021年2月22日 19:49
+[…]  阿里云卸载云盾/安骑士脚本：一键卸载阿里云的云盾、安骑士，几乎是买马爸爸服务器的必备操作； […]
+
+评论已关闭。
+搜索：搜索…
+热门文章
+V2ray多合一脚本，支持VMESS+websocket+TLS+Nginx、VLESS+TCP+XTLS、VLESS+TCP+TLS等组合
+Xray一键脚本
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+v2ray带伪装一键脚本
+V2Ray一键脚本
+深入理解Clash配置文件
+科学上网用的vps和域名的選購
+近期一些现象的提示
+V2Ray windows客户端下载
+近期文章
+江湖再见！
+人均博客系列一:零成本搭个永久可用的博客
+科学上网用的vps和域名的選購
+Brave浏览器使用教程
+Warp系列1(warp接管ipv4+ipv6)
+近期一些现象的提示
+一键脚本证书申请失败、无法自动续期的解决办法
+下载qv2ray完全版
+一键腳本上遇到的問题
+还炒币吗？还抄底吗？
+标签云
+Clash for Android教程 clash for windows教程 Clash JMS clash trojan clash v2ray clashX教程 clash教程 clash配置trojan clash配置v2ray cloudflare CN2 GIA VPS CN2 GIA商家 Just My Socks Just My Socks V2ray NAT VPS shadowrocket ssh教程 ssr mac客户端 SSR一键脚本 ssr安卓客户端 ssr苹果客户端 ss一键脚本 ss苹果客户端 trojan-go一键脚本 trojan一键脚本 v2ray+cdn+tls+ws v2ray Cenos一键脚本 v2ray mac客户端 v2ray ubuntu一键脚本 v2ray windows客户端 v2ray一键脚本 v2ray安卓客户端 v2ray苹果客户端 VLESS+TCP+XTLS一键脚本 VLESS一键脚本 vps去程路由 vps回程路由 vultr教程 WordPress一键脚本 Xray一键脚本 京东薅羊毛 小火箭教程 科学上网 美国vps 配置telegram
+相关文章
+cloudflare logo
+VPS教程
+人均博客系列一:零成本搭个永久可用的博客
+人均博客系列主要是教你用最低的成本搭个不错的blog,而不是叫你买dmit装Wordpress再套cf等(不可描述)的行为。
+
+樱空桃
+VPS教程
+科学上网用的vps和域名的選購
+本文主要是水文章(ps:warp ipv6分流分到我要死了)説一下科学上网要選購什么,什么適合你?
+
+三上悠亚
+VPS教程
+Warp系列1(warp接管ipv4+ipv6)
+昨天在github找代码，看到一个项目,上面写了: 3：WARP分配的IPV4或者IPV6的IP段，都支持奈非Netflix流媒体，无视VPS原IP限制！ 4：加速VPS到CloudFlare CDN节点访问速度！ 5：避开原VPS的IP需要谷歌验证码问题！ 读后感:真香
+
+本站食用指南隐私政策©2020 V2ray科技
