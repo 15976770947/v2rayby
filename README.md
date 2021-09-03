@@ -1,10 +1,13 @@
 # v2rayby
 hostip.php 重要文件验证域名于对其ip 失效了添加上去替换即可
+如果脚本发现未找到Dig命令，可能需要安装bind-utils[centos系统]，或者[Debain系统]dnsutils，安装完成再执行脚本
+看其他方式验证 域名还有ip
+https://github.com/15976770947/v2rayby/blob/main/%E5%87%BA%E7%8F%BE%E5%95%8F%E9%A1%8C%E7%9C%8B%E9%80%99%E8%A3%A1.txt
 其他備份人士
 https://github.com/t2015q/scripts
 其他備份人士
 https://github.com/wixfreto/hijkpw-scripts
-
+#   安装教程
 CentOS系统请输入yum install -y curl，Ubuntu/Debian系统请输入sudo apt install -y curl，然后再次运行上面的命令：
 安装魔改BBR/BBR Plus/锐速(Lotserver)
 根据 v2ray一键脚本 教程安装v2ray，提示重启时按 ctrl+c 中止重启；
