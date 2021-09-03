@@ -7,6 +7,10 @@ https://github.com/15976770947/v2rayby/blob/main/%E5%87%BA%E7%8F%BE%E5%95%8F%E9%
 https://github.com/t2015q/scripts
 其他備份人士
 https://github.com/wixfreto/hijkpw-scripts
+#   安装脚本
+bbr脚本
+wget -N --no-check-certificate "https://raw.githubusercontent.com/15976770947/v2rayby/main/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+
 #   安装教程
 CentOS系统请输入yum install -y curl，Ubuntu/Debian系统请输入sudo apt install -y curl，然后再次运行上面的命令：
 安装魔改BBR/BBR Plus/锐速(Lotserver)
