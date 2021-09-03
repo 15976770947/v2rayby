@@ -1,4 +1,5 @@
 # v2rayby
+hostip.php 重要文件验证域名于对其ip 失效了添加上去替换即可
 其他備份人士
 https://github.com/t2015q/scripts
 其他備份人士
