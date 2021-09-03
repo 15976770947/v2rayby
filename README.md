@@ -14,7 +14,7 @@ bbr其他更多功能脚本【推荐这个】
 2021.03.13更新：推荐使用如下脚本
 
 wget -N --no-check-certificate "https://github.000060000.xyz/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
-
+wget -N --no-check-certificate "https://raw.githubusercontent.com/15976770947/v2rayby/main/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
 支持更多内核和选项
 #  v2ray多合一脚本
 bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh)
