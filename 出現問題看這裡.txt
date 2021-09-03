@@ -50,3 +50,6 @@ https://github.com/acmesh-official/acme.sh
 脚本里面有这个地址的  https://get.acme.sh
 hijk.pw@protonmail.ch
 这个是申请证书 脚本绑定的 有问题再去项目解决
+
+那些检测文件都是包含 hijk.art
+有问题搜索这个即可  mt管理器 替换
