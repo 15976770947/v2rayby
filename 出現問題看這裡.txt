@@ -41,3 +41,7 @@ After=network.target nss-lookup.target
 出問題刪除這個試一試嘿嘿嘿
 
 如果脚本发现未找到Dig命令，可能需要安装bind-utils[centos系统]，或者[Debain系统]dnsutils，安装完成再执行脚本
+证书如果申请失败 就更换里面的修改对应即可
+https://github.com/acmesh-official/acme.sh
+里面参考
+地址跟脚本一起
