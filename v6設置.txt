@@ -1,0 +1,12 @@
+https://dash.cloudflare.com/077ce5ae21616fa7af438a7a60e1395a/workers/new
+
+
+在clou的網站裡面設置  
+複製全部代碼
+然後綁定子域名即可
+使用
+V6代理設置
+
+
+Wo什麼
+必須電腦設置
