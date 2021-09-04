@@ -1,3 +1,5 @@
+#  v6设置
+https://jiz4oh.com/2020/12/cloudflare-workers/
 #  xray核心文件
 https://github.com/15976770947/Xray-core
 已经备份 
