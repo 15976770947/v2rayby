@@ -1,3 +1,7 @@
+#  bbr v2ray脚本里面文件
+http://www.elrepo.org/elrepo-release-7.0-4.el7.elrepo.noarch.rpm
+https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+相关已经上传文件代码里面
 #  项目里面v2ray已经备份
 https://github.com/v2fly/v2ray-core/releases/download/${NEW_VER}/v2ray-linux-$(archAffix).zip
 #  原作者时光机项目保存
