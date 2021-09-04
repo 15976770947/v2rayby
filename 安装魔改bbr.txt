@@ -1,5 +1,10 @@
 V2ray科技
+魔改bbr
+wget -N --no-check-certificate "https://raw.githubusercontent.com/15976770947/v2rayby/main/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 
+
+魔改
+wget -N --no-check-certificate "https://raw.githubusercontent.com/15976770947/v2rayby/main/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
 
 切换导航
 安装魔改BBR/BBR Plus/锐速(Lotserver)
