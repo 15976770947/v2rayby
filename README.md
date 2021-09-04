@@ -1,3 +1,5 @@
+#  原作者可能有脚本部分是github的他自己用这个看
+https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
 #  v6设置
 https://jiz4oh.com/2020/12/cloudflare-workers/
 #  xray核心文件
