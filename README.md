@@ -12,7 +12,9 @@ https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 相关已经上传文件代码里面
 #  项目里面v2ray已经备份 自己复制了在自己存储库
 https://github.com/v2fly/v2ray-core/releases/download/${NEW_VER}/v2ray-linux-$(archAffix).zip
-然后
+然后acme.sh  项目 https://github.com/acmesh-official/acme.sh
+脚本里面证书获取就是他的如有变动 替换即可 或者代码里面有三个修改方式
+https://web.archive.org/web/20210904020554/https://github.com/acmesh-official/acme.sh
 #  原作者时光机项目保存
 https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
 已备份，v2ray文件
