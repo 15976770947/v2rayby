@@ -1,3 +1,7 @@
+#  xray核心文件
+https://github.com/15976770947/Xray-core
+已经备份 
+https://github.com/XTLS/Xray-core/
 #  bbr v2ray脚本里面文件
 http://www.elrepo.org/elrepo-release-7.0-4.el7.elrepo.noarch.rpm
 https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
