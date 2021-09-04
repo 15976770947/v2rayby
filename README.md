@@ -1,3 +1,5 @@
+#  项目里面v2ray已经备份
+https://github.com/v2fly/v2ray-core/releases/download/${NEW_VER}/v2ray-linux-$(archAffix).zip
 #  原作者时光机项目保存
 https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
 已备份，v2ray文件
