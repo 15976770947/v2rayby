@@ -1,3 +1,6 @@
+#  v2 ui  x ui自己找
+https://github.com/forevergooe/v2-ui
+x ui
 #  原作者可能有脚本部分是github的他自己用这个看
 https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
 #  v6设置
