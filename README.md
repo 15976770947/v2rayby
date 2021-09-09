@@ -1,4 +1,7 @@
-#  
+#超越腳本  
+v2 ui x ui需要寶塔面板一起搭配或者其他腳本申請證書4個
+沒加密 單ws v2ray 以後再測試需不需要寶塔面板來搭配tls    
+xray波仔  
 #  v2 ui  x ui自己找  已经备份  互联网时光机可以找
 https://github.com/forevergooe/v2-ui
 x ui
