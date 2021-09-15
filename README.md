@@ -1,3 +1,5 @@
+#gost隧道
+https://github.com/KANIKIG/Multi-EasyGost
 #bbr脚本原项目
 https://github.com/chiakge/Linux-NetSpeed
 最新适用。bbr
