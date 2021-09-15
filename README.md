@@ -1,3 +1,6 @@
+#bbr脚本原项目
+https://github.com/chiakge/Linux-NetSpeed
+
 #脚本
 微信收藏4个  网络超越脚本 v2 ui x ui  没加密v2ray
 xray波仔脚本 网络超越脚本出问题用其他两个 或者nat教程使用
