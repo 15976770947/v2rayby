@@ -1,3 +1,18 @@
+#  iata安装教程
+Ipta使用教程
+ipta  用dd  如果 使用海外脚本 或者国内脚本转发试一试   或者用手动配置那里跟那个f那个一模一样  开机自启
+或者手动安装ipta然后使用脚本  国内 海外
+或者手动配置f的那个
+安装教程
+https://www.cnblogs.com/kreo/p/4368811.html
+https://zhuanlan.zhihu.com/p/266481108
+https://www.jianshu.com/p/df45bca984fd
+卸载f什么防火墙
+https://www.xianba.net/4992.html
+通用转发脚本
+wget --no-check-certificate -qO natcfg.sh http://www.arloor.com/sh/iptablesUtils/natcfg.sh && bash natcfg.sh
+https://github.com/arloor/iptablesUtils
+项目  https://github.com/15976770947/iptablesUtils
 #   ita转发脚本
 https://github.com/arloor/iptablesUtils
 #gost隧道
