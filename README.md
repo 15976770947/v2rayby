@@ -1,6 +1,7 @@
 #bbr脚本原项目
 https://github.com/chiakge/Linux-NetSpeed
-
+最新适用。bbr
+https://github.com/MaRuifu/Shadowsocks/blob/7afca411b562de426bd4b8704dad8fab68ec2392/speed-ssr.md
 #脚本
 微信收藏4个  网络超越脚本 v2 ui x ui  没加密v2ray
 xray波仔脚本 网络超越脚本出问题用其他两个 或者nat教程使用
