@@ -111,7 +111,8 @@ bash <(curl -sL https://s.hijk.art/mtproto.sh)
 
 bash -c "$(curl -sS https://gitee.com/fhcloud/lighthouse_serviceuninstall/raw/master/uninstall.sh )"
 自己换本代码裡面
-
+最新可用腳本卸載騰訊雲腳本 
+https://gitee.com/fhcloud/lighthouse_serviceuninstall?_from=gitee_search
 互聯網時光機歷史網站
 https://web.archive.org/web/20210902033525/https://v2raytech.com/bye-bye/
 #   证书自动申请失败
