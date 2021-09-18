@@ -1,6 +1,8 @@
 #  自建ddns
 微信收藏有 香港服務器那裡
 或者這裡項目
+騰訊雲刪除監控    還要配合網絡超越的這個網站沒了用互聯網時光機打開即可https://v2raytech.com/uninstall-tencent-cloud-monitors/
+https://gitee.com/fhcloud/lighthouse_serviceuninstall?_from=gitee_search
 #  iata安装教程
 Ipta使用教程
 ipta  用dd  如果 使用海外脚本 或者国内脚本转发试一试   或者用手动配置那里跟那个f那个一模一样  开机自启
