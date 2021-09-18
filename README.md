@@ -1,3 +1,15 @@
+#  自建ddns2
+cf自建ddns域名   按 esc : x 保存  或者: wq 电脑 shift : 即可
+https://www.shiyanhe.com/149.html/
+如何保存wq网站 
+https://zhidao.baidu.com/question/505053915.html?qbl=relate_question_1
+自建ddns 用别人得免费域名
+https://doc.anyhk.net/anyhk-nat/ddns/ddns-dynu
+自建ddns
+https://nathosts.com/index.php?rp=/knowledgebase/4/DDNSCloudFlare.html
+自建ddns
+https://doc.anyhk.net/anyhk-nat/ddns/ddns-changeip
+*/1 * * * * curl "https://api.dynu.com/nic/update?hostname=域名&password=密码"
 #  自建ddns
 微信收藏有 香港服務器那裡
 或者這裡項目
