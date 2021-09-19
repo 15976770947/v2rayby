@@ -1,3 +1,5 @@
+#  主用ddns教程
+https://github.com/15976770947/cfddns2/blob/main/README.md
 #  自建ddns2
 cf自建ddns域名   按 esc : x 保存  或者: wq 电脑 shift : 即可
 https://www.shiyanhe.com/149.html/
