@@ -5,7 +5,9 @@ v2 ui x ui需要宝塔面板一起搭配或者其他脚本申请证书4个
 xray波仔  
 
 反代網站 找其他 小說站 或者谷歌找網站  壁紙站  然後可以自己設置網絡超越腳本裡面網站，或者執行腳本后自己打入需要反代的網站地址
-
+还有 v6  apihttps://api.ip.sb/ip
+v6挂了这里每一个都试一试，或者v6挂没事
+检测域名ip的这里都可以用 试一试
 原版
 
 resolve=curl -sL https://hijk.art/hostip.php?d=${DOMAIN}
