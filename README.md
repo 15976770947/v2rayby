@@ -1,3 +1,5 @@
+#  nat如何使用教程 v2ray多合一脚本
+https://web.archive.org/web/20210921051615/https://v2raytech.com/run-scripts-on-nat-vps/
 #  主用ddns教程
 https://github.com/15976770947/cfddns2/blob/main/README.md
 #  自建ddns2
