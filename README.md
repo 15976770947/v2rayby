@@ -1,3 +1,5 @@
+#  自建xray vless
+https://web.archive.org/web/20210928051706/https://ybfl.xyz/98.html
 #  bbr
 bbr加速
 https://v2raytech.com/install-bbr-plus-lotserver/
