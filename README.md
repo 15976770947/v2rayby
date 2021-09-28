@@ -1,3 +1,20 @@
+#  bbr
+bbr加速
+https://v2raytech.com/install-bbr-plus-lotserver/
+https://github.com/MaRuifu/Shadowsocks/blob/7afca411b562de426bd4b8704dad8fab68ec2392/speed-ssr.md
+https://github.com/stonegr/wdjs
+原项目
+https://github.com/MaRuifu/Shadowsocks/blob/7afca411b562de426bd4b8704dad8fab68ec2392/speed-ssr.md
+wget -N --no-check-certificate "https://github.000060000.xyz/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
+或
+
+wget -O tcpx.sh "https://git.io/JYxKU" && chmod +x tcpx.sh && ./tcpx.sh
+
+旧版本bbr项目
+https://github.com/chiakge/Linux-NetSpeed
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"
+chmod +x tcp.sh
+./tcp.sh
 #  nat如何使用教程 v2ray多合一脚本
 https://web.archive.org/web/20210921051615/https://v2raytech.com/run-scripts-on-nat-vps/
 #  主用ddns教程
