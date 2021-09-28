@@ -1,5 +1,6 @@
 #  自建xray vless
 https://web.archive.org/web/20210928051706/https://ybfl.xyz/98.html
+https://github.com/wulabing/V2Ray_ws-tls_bash_onekey
 #  bbr
 bbr加速
 https://v2raytech.com/install-bbr-plus-lotserver/
