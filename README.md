@@ -1,3 +1,7 @@
+#  自建ws 加tls
+https://github.com/v2fly/v2ray-core/tree/master/transport
+https://toutyrater.github.io/advanced/wss_and_web.html#caddy-%E9%85%8D%E7%BD%AE
+不懂这里项目参考下面这个教程，或者看微信收藏  
 #  自建xray vless
 https://web.archive.org/web/20210928051706/https://ybfl.xyz/98.html
 https://github.com/wulabing/V2Ray_ws-tls_bash_onekey
