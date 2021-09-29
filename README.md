@@ -1,6 +1,7 @@
 #  ssh工具
 https://www.hostbuf.com/
 #  自建ws 加tls
+https://github.com/wulabing/V2Ray_ws-tls_bash_onekey
 https://github.com/v2fly/fhs-install-v2ray
 https://github.com/v2fly/v2ray-core/tree/master/transport
 https://toutyrater.github.io/advanced/wss_and_web.html#caddy-%E9%85%8D%E7%BD%AE
