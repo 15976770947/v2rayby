@@ -134,6 +134,12 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/15976770947/v2
 支持更多内核和选项
 #  v2ray多合一脚本
 bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh)
+
+
+https://web.archive.org/web/20210220110507/https://v2raytech.com/v2ray-all-in-one-script-vless-tcp-xtls-support/
+
+按回车键，将出现如下操作菜单。如果菜单没出现，CentOS系统请输入 yum install -y curl，Ubuntu/Debian系统请输入 sudo apt install -y curl，然后再次运行上面的命令：
+
 #   安装教程
 CentOS系统请输入yum install -y curl，Ubuntu/Debian系统请输入sudo apt install -y curl，然后再次运行上面的命令：
 安装魔改BBR/BBR Plus/锐速(Lotserver)
