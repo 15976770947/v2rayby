@@ -1,6 +1,8 @@
-#v2ray脚本多合一nginx对应网站
+#v2ray脚本多合一nginx对应网站 还有v2ray 还有申请脚本ac
 http://nginx.org/en/linux_packages.html#RHEL-CentOS
-
+https://github.com/v2fly/v2ray-core
+http://nginx.org/en/linux_packages.html#RHEL-CentOS
+https://github.com/acmesh-official/acme.sh
 #  ssh工具
 https://www.hostbuf.com/
 #  自建ws 加tls
