@@ -87,6 +87,7 @@ v2 ui x ui需要寶塔面板一起搭配或者其他腳本申請證書4個
 xray波仔  
 #  v2 ui  x ui自己找  已经备份  互联网时光机可以找
 https://github.com/forevergooe/v2-ui
+bash <(curl -Ls https://raw.githubusercontent.com/tszho-t/v2-ui/master/install.sh)
 x ui
 #  原作者可能有脚本部分是github的他自己用这个看
 https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
