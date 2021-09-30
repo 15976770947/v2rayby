@@ -1,3 +1,6 @@
+#v2ray脚本多合一nginx对应网站
+http://nginx.org/en/linux_packages.html#RHEL-CentOS
+
 #  ssh工具
 https://www.hostbuf.com/
 #  自建ws 加tls
