@@ -5,6 +5,8 @@ http://nginx.org/en/linux_packages.html#RHEL-CentOS
 https://github.com/acmesh-official/acme.sh
 #  ssh工具
 https://www.hostbuf.com/
+屏蔽bt
+https://doubibackup.com/tfma58rb.html
 #  自建ws 加tls
 https://github.com/wulabing/V2Ray_ws-tls_bash_onekey
 https://github.com/v2fly/fhs-install-v2ray
