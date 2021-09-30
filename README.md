@@ -89,6 +89,8 @@ xray波仔
 https://github.com/forevergooe/v2-ui
 bash <(curl -Ls https://raw.githubusercontent.com/tszho-t/v2-ui/master/install.sh)
 x ui
+https://github.com/vaxilu/x-ui
+bash <(curl -Ls https://raw.githubusercontent.com/sprov065/x-ui/master/install.sh)
 #  原作者可能有脚本部分是github的他自己用这个看
 https://web.archive.org/web/20210902064032/https://github.com/hijkpw/scripts/tree/master
 #  v6设置
