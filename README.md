@@ -8,6 +8,7 @@ https://www.hostbuf.com/
 屏蔽bt
 https://doubibackup.com/tfma58rb.html
 #  自建ws 加tls 其他协议配置文件脚本找或者网上找 默认ws加tls
+https://libertyleadingnetwork.blogspot.com/2021/09/nginxv2rayxraytrojan443.html?m=1
 https://www.xiaoz.me/archives/10301
 https://toutyrater.github.io/prep/install.html
 https://github.com/wulabing/V2Ray_ws-tls_bash_onekey
