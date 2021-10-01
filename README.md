@@ -9,6 +9,7 @@ https://www.hostbuf.com/
 https://doubibackup.com/tfma58rb.html
 #  自建ws 加tls 其他协议配置文件脚本找或者网上找 默认ws加tls
 启动
+https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2ray%E5%AE%98%E6%96%B9%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC.md
 https://tlanyan.pp.ua/introduce-v2ray-vless-protocol/#bnp_i_4
 systemctl enable v2ray
 systemctl enable nginx
