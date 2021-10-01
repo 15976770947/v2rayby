@@ -1,0 +1,17 @@
+        {
+          "id": "80363171-ba62-41af-be54-2583a9f00f75",
+          "flow": "xtls-rprx-direct",
+server {
+    listen 80;
+    listen [::]:80;
+    listen 81 http2;
+    server_name an01.ganjuzx.cn;
+    root /usr/share/nginx/html;
+    location / {
+        proxy_ssl_server_name on;
+        proxy_pass http://www.ddxsku.com/;
+        proxy_set_header Accept-Encoding '';
+        sub_filter "www.ddxsku.com" "an01.ganjuzx.cn";
+        sub_filter_once off;
+    }
+}

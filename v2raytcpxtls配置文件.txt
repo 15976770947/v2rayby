@@ -1,0 +1,36 @@
+        {
+          "id": "80363171-ba62-41af-be54-2583a9f00f75",
+          "flow": "xtls-rprx-direct",
+          "level": 0
+        }
+      ],
+      "decryption": "none",
+      "fallbacks": [
+          {
+              "alpn": "http/1.1",
+              "dest": 80
+          },
+          {
+              "alpn": "h2",
+              "dest": 81
+          }
+      ]
+    },
+    "streamSettings": {
+        "network": "tcp",
+        "security": "xtls",
+        "xtlsSettings": {
+            "serverName": "an01.ganjuzx.cn",
+            "alpn": ["http/1.1", "h2"],
+            "certificates": [
+                {
+                    "certificateFile": "/etc/v2ray/an01.ganjuzx.cn.pem",
+                    "keyFile": "/etc/v2ray/an01.ganjuzx.cn.key"
+                }
+            ]
+        }
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}

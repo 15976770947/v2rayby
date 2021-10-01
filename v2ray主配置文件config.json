@@ -1,0 +1,43 @@
+{
+  "inbounds": [{
+    "port": 58543,
+    "listen": "127.0.0.1",
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "e5f8d8d8-14a2-4c61-93e0-70cc94acfdaa",
+          "level": 1,
+          "alterId": 0
+        }
+      ],
+      "disableInsecureEncryption": false
+    },
+    "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+            "path": "/mU8iCtD",
+            "headers": {
+                "Host": "rppy.ganjuzx.cn"
+            }
+        }
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}
+  },{
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blocked"
+  }],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "blocked"
+      }
+    ]
+  }
+}
