@@ -8,6 +8,7 @@ https://www.hostbuf.com/
 屏蔽bt
 https://doubibackup.com/tfma58rb.html
 #  自建ws 加tls
+https://www.xiaoz.me/archives/10301
 https://toutyrater.github.io/prep/install.html
 https://github.com/wulabing/V2Ray_ws-tls_bash_onekey
 https://github.com/v2fly/fhs-install-v2ray
