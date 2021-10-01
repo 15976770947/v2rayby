@@ -1,3 +1,5 @@
+#nginx一鍵安裝
+https://www.xiaoz.me/archives/10301
 #  ss項目  ss腳本出問題這裡換
 https://github.com/shadowsocks/shadowsocks-libev/
 https://github.com/shadowsocks/shadowsocks-libev/releases/download/v${new_ver}/shadowsocks-libev-${new_ver}.tar.gz
