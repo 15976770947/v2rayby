@@ -9,6 +9,7 @@ https://www.hostbuf.com/
 https://doubibackup.com/tfma58rb.html
 #  自建ws 加tls 其他协议配置文件脚本找或者网上找 默认ws加tls
 启动
+https://tlanyan.pp.ua/introduce-v2ray-vless-protocol/#bnp_i_4
 systemctl enable v2ray
 systemctl enable nginx
 配置文件全部在项目文件里面
