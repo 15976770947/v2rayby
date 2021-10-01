@@ -1,4 +1,5 @@
-#  v2ray脚本多合一nginx对应网站 还有v2ray 还有申请脚本ac
+#  v2ray脚本多合一nginx对应网站 还有v2ray 还有申请脚本ac 還有xray
+https://github.com/XTLS/Xray-core/
 http://nginx.org/en/linux_packages.html#RHEL-CentOS
 https://github.com/v2fly/v2ray-core
 http://nginx.org/en/linux_packages.html#RHEL-CentOS
