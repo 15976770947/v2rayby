@@ -1,4 +1,4 @@
-ss項目  ss腳本出問題這裡換
+#  ss項目  ss腳本出問題這裡換
 https://github.com/shadowsocks/shadowsocks-libev/
 https://github.com/shadowsocks/shadowsocks-libev/releases/download/v${new_ver}/shadowsocks-libev-${new_ver}.tar.gz
 #  v2ray脚本多合一nginx对应网站 还有v2ray 还有申请脚本ac 還有xray
