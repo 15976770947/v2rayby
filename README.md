@@ -1,5 +1,10 @@
-#nginx一鍵安裝
+#  nginx一鍵安裝
 https://www.xiaoz.me/archives/10301
+uuid生成
+b.修改xray配置文件
+先生成一个UUID或者去网站随机生成一个 https://www.uuidgenerator.net/
+
+cat /proc/sys/kernel/random/uuid
 #  ss項目  ss腳本出問題這裡換
 https://github.com/shadowsocks/shadowsocks-libev/
 https://github.com/shadowsocks/shadowsocks-libev/releases/download/v${new_ver}/shadowsocks-libev-${new_ver}.tar.gz
