@@ -1,8 +1,20 @@
 #  nginx一鍵安裝
 https://www.xiaoz.me/archives/10301
-uuid生成
-b.修改xray配置文件
-先生成一个UUID或者去网站随机生成一个 https://www.uuidgenerator.net/
+uuid生成成一个UUID命令或者去网站随机生成一个 https://www.uuidgenerator.net/
+V2ray安装链接 手动佈置
+https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2ray%E5%AE%98%E6%96%B9%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC.md
+还有nginx安装链接
+https://www.xiaoz.me/archives/10301
+还有xray安装
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+佈置的话 看项目里面 
+Nginx替换配置文件
+还有v2ray 或者 xray替换配置文件
+要什么协议换什么配置文件即可
+然后命令启动即可
+记得bbr
+还有申请证书  ac的 还有 宝塔  来此加密
+当然可以中转
 
 cat /proc/sys/kernel/random/uuid
 #  ss項目  ss腳本出問題這裡換
