@@ -1,0 +1,5 @@
+脚本选择静态
+然后保存到
+/usr/share/nginx/html
+即可
+重启 systemctl reload nginx
