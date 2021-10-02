@@ -66,8 +66,9 @@ https://github.com/chiakge/Linux-NetSpeed
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"
 chmod +x tcp.sh
 ./tcp.sh
-#  nat如何使用教程 v2ray多合一脚本
+#  nat如何使用教程 v2ray多合一脚本 还有证书申请
 https://web.archive.org/web/20210921051615/https://v2raytech.com/run-scripts-on-nat-vps/
+https://web.archive.org/web/20210906020941/https://www.v2rayssr.com/x-ui.html#%E6%9B%B4%E6%96%B0%E5%8F%8A%E5%AE%89%E8%A3%85%E7%BB%84%E4%BB%B6
 #  主用ddns教程
 https://github.com/15976770947/cfddns2/blob/main/README.md
 #  自建ddns2
