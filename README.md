@@ -160,7 +160,7 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/15976770947/v2
 支持更多内核和选项
 #  v2ray多合一脚本
 bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh)
-
+bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/main/xrayv2ray.sh)
 
 https://web.archive.org/web/20210220110507/https://v2raytech.com/v2ray-all-in-one-script-vless-tcp-xtls-support/
 
