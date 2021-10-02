@@ -1,0 +1,3 @@
+ Xray配置文件:  /usr/local/etc/xray/config.json
+vi  /etc/nginx/nginx.conf
+vi  /etc/nginx/conf.d/域名然后里面就是配置文件需要反代的
