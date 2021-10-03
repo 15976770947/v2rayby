@@ -5,6 +5,9 @@ x ui如何使用 443端口
 https://web.archive.org/web/20211003192806/https://188299.xyz/2021/08/x-ui_nginx_vmesswebsockstls/
 v2 ui 如何使用443端口
 https://web.archive.org/web/20210118133432/https://glorystar.me/archives/v2-ui-work-with-bt-vmess-websocks-tls.html
+
+v2  ui如何使用443端口  按理x ui都支持
+https://www.v2rayssr.com/xray_v2ui_bt.html
 #  提示
 就用。网络超越脚本  支持。nat
 还有 x ui v2 ui    都支持   搭配宝塔
