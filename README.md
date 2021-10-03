@@ -1,22 +1,19 @@
-#  nginx一鍵安裝
-https://www.xiaoz.me/archives/10301
-uuid生成成一个UUID命令或者去网站随机生成一个 https://www.uuidgenerator.net/
-V2ray安装链接 手动佈置
-https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2ray%E5%AE%98%E6%96%B9%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC.md
-还有nginx安装链接
-https://www.xiaoz.me/archives/10301
-还有xray安装
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
-佈置的话 看项目里面 
-Nginx替换配置文件
-还有v2ray 或者 xray替换配置文件
-要什么协议换什么配置文件即可
-然后命令启动即可
-记得bbr
-还有申请证书  ac的 还有 宝塔  来此加密
-当然可以中转
+#  提示
+就用。网络超越脚本  支持。nat
+还有 x ui v2 ui    都支持   搭配宝塔
+还有没加密v2ray   都支持    搭配宝塔
+证书   ac  宝塔   还有  来此加密  还有免费那个没了
 
-cat /proc/sys/kernel/random/uuid
+还有波仔脚本分享那个   只支持vps
+还有项目里面  只支持vps
+一键
+
+
+
+手动配置nginx
+
+还有手动配置 v2ray
+叫他滚
 #  ss項目  ss腳本出問題這裡換
 https://github.com/shadowsocks/shadowsocks-libev/
 https://github.com/shadowsocks/shadowsocks-libev/releases/download/v${new_ver}/shadowsocks-libev-${new_ver}.tar.gz
