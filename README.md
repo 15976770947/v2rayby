@@ -1,14 +1,15 @@
-#  没加密v2ray
-https://github.com/PhenTse/multi-v2ray
-https://github.com/Jrohy/multi-v2ray
+#  443
 x ui如何使用 443端口 
 https://web.archive.org/web/20211003192806/https://188299.xyz/2021/08/x-ui_nginx_vmesswebsockstls/
 v2 ui 如何使用443端口
 https://web.archive.org/web/20210118133432/https://glorystar.me/archives/v2-ui-work-with-bt-vmess-websocks-tls.html
-要用xtls 在v2ray json配置文件加这个即可 443              "alpn": ["http/1.1", "h2"],
-还有宝塔面板网站文件加这个  	listen 81 http2;
-v2  ui如何使用443端口  按理x ui都支持
+v2  ui如何使用443端口  按理x ui都支持 【简单主用】适用于ws
 https://www.v2rayssr.com/xray_v2ui_bt.html
+
+#  没加密v2ray
+https://github.com/PhenTse/multi-v2ray
+https://github.com/Jrohy/multi-v2ray
+
 #  提示
 就用。网络超越脚本  支持。nat
 还有 x ui v2 ui    都支持   搭配宝塔
