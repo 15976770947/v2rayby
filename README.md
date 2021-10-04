@@ -5,6 +5,8 @@ v2 ui 如何使用443端口
 https://web.archive.org/web/20210118133432/https://glorystar.me/archives/v2-ui-work-with-bt-vmess-websocks-tls.html
 v2  ui如何使用443端口  按理x ui都支持 【简单主用】适用于ws
 https://www.v2rayssr.com/xray_v2ui_bt.html
+可以叠加使用 ws加tls共用443 以及vl的哈哈哈哈
+vl的 xtls 不能443没办法
 
 #  没加密v2ray
 https://github.com/PhenTse/multi-v2ray
