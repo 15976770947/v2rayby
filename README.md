@@ -1,3 +1,14 @@
+#  xray脚本只安装1.42怎么办
+echo "$1"
+            ;;
+            http*)
+                echo "v1.4.2"
+            ;;
+            *)
+                echo "v$1"
+            ;;
+修改这个 或者使用 已经解决了，谢谢！ 使用的这个命令 https://github.com/XTLS/Xray-install#advance
+更新最新
 #  反代网站2
 https://www.obzhi.com/
 #  443
