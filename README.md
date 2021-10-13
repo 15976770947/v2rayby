@@ -12,6 +12,8 @@ echo "$1"
 #  反代网站2
 https://www.obzhi.com/
 #  443
+宝塔面板配置手动建 https://www.moeloc.com/2241.html
+json配置文件可参考
 x ui如何使用 443端口 
 https://web.archive.org/web/20211003192806/https://188299.xyz/2021/08/x-ui_nginx_vmesswebsockstls/
 v2 ui 如何使用443端口
