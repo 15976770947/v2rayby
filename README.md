@@ -1,3 +1,5 @@
+v2安装 支持v6配置  v6 可能要dns申请
+https://web.archive.org/save/https://v2raytech.com/add-ipv6-support/
 #  xray脚本只安装1.42怎么办
 echo "$1"
             ;;
