@@ -190,6 +190,8 @@ https://github.com/15976770947/v2rayby/blob/main/%E5%87%BA%E7%8F%BE%E5%95%8F%E9%
 https://github.com/t2015q/scripts
 其他備份人士
 https://github.com/wixfreto/hijkpw-scripts
+原项目 别人xray的 里面有证书v6 我套了v2ray xf
+https://github.com/Misaka-blog/Xray-script/blob/master/xray.sh#L452
 #   安装脚本
 bbr脚本
 wget -N --no-check-certificate "https://raw.githubusercontent.com/15976770947/v2rayby/main/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
