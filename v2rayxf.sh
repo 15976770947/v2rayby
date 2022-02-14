@@ -565,12 +565,12 @@ getCert() {
             --reloadcmd     "service nginx force-reload"
         [[ -f $CERT_FILE && -f $KEY_FILE ]] || {
             colorEcho $RED " 获取证书失败，请到 https://hijk.art 反馈"
-            exit 1
-        }
-    else
-        cp ~/v2ray.pem /etc/v2ray/${DOMAIN}.pem
-        cp ~/v2ray.key /etc/v2ray/${DOMAIN}.key
-    fi
+			exit 1
+		}
+	else
+		cp ~/xray.pem /usr/local/etc/xray/${DOMAIN}.pem
+		cp ~/xray.key /usr/local/etc/xray/${DOMAIN}.key
+	fi
 }
 
 configNginx() {
