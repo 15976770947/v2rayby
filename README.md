@@ -7,6 +7,7 @@ mKCP 伪装 微信视频通话流量(wechat-video)
 可以用于anyhk 或者校园网mkcp
 #  v2安装 支持v6配置  v6 可能要dns申请
 https://web.archive.org/save/https://v2raytech.com/add-ipv6-support/
+https://web.archive.org/web/20220127000310/https://v2raytech.com/add-ipv6-support/
 #  xray脚本只安装1.42怎么办
 echo "$1"
             ;;
