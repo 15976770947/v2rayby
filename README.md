@@ -3,6 +3,7 @@ bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2
 bash -c "$(curl -sS https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh && ./v2ray.sh)"
 https://github.com/Jrohy/multi-v2ray
 https://github.com/PhenTse/multi-v2ray
+bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/main/xraycs1.sh)
 mKCP 伪装 微信视频通话流量(wechat-video)
 可以用于anyhk 或者校园网mkcp
 #  v2安装 支持v6配置  v6 可能要dns申请
