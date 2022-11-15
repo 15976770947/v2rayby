@@ -1,4 +1,11 @@
-v2安装 支持v6配置  v6 可能要dns申请
+#  脚本
+bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh)
+bash -c "$(curl -sS https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh && ./v2ray.sh)"
+https://github.com/Jrohy/multi-v2ray
+https://github.com/PhenTse/multi-v2ray
+mKCP 伪装 微信视频通话流量(wechat-video)
+可以用于anyhk 或者校园网mkcp
+#  v2安装 支持v6配置  v6 可能要dns申请
 https://web.archive.org/save/https://v2raytech.com/add-ipv6-support/
 #  xray脚本只安装1.42怎么办
 echo "$1"
