@@ -39,6 +39,7 @@ vl的 xtls 不能443没办法
 #  没加密v2ray
 v2ray update v4.45.2
 记得执行这个 不然启动不了 anyhk
+Anyhk机器 反向代理 目标ucl是 http://网关 anyhk机器的左边网关跟ip在一起的加:端口v2ray的
 https://github.com/PhenTse/multi-v2ray
 https://github.com/Jrohy/multi-v2ray
 
