@@ -37,6 +37,8 @@ https://www.v2rayssr.com/xray_v2ui_bt.html
 vl的 xtls 不能443没办法
 
 #  没加密v2ray
+v2ray update v4.45.2
+记得执行这个 不然启动不了 anyhk
 https://github.com/PhenTse/multi-v2ray
 https://github.com/Jrohy/multi-v2ray
 
