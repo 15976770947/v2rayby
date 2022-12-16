@@ -3,6 +3,11 @@ https://github.com/15976770947/v2ray-ba-he-1
 别人 v2ray修复脚本参考
 https://github.com/hiifeng/v2ray
 https://github.com/15976770947/v2ray
+https://github.com/15976770947/oneforall
+https://github.com/oneforallofall/oneforall
+这个 h什么别理他 上面都是 v2ray xray tro的 xtls nat都可以使用
+除了anyhk
+https://github.com/emptysuns/Hi_Hysteria
 tls 1.3 速度提升
 #  脚本
 bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh)
