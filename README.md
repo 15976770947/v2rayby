@@ -1,5 +1,9 @@
 #  八合一脚本 自己手动修复完毕
 https://github.com/15976770947/v2ray-ba-he-1
+别人 v2ray修复脚本参考
+https://github.com/hiifeng/v2ray
+https://github.com/15976770947/v2ray
+tls 1.3 速度提升
 #  脚本
 bash <(curl -sL https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh)
 bash -c "$(curl -sS https://raw.githubusercontent.com/15976770947/v2rayby/v2raycs/v2ray.sh && ./v2ray.sh)"
