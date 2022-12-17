@@ -1,5 +1,6 @@
 #  八合一脚本 自己手动修复完毕
 https://github.com/15976770947/v2ray-ba-he-1
+Xraycs1  是tls1.1 1.2  xrayv2ray 是最新tls1.3
 ssl_protocols 这个 可以设置 1.12 或者tls1.13  之前版本是 tls1.11 tls1.12
 别人 v2ray修复脚本参考  升级 1.3 v2
 https://github.com/hiifeng/v2ray
