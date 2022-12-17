@@ -1,5 +1,6 @@
 #  单纯ipv6 执行这个 参考这个 还有nat 有v4加v6用脚本一次性过即可 动态域名参考ddns 自己脚本
 https://web.archive.org/web/20210921051615/https://v2raytech.com/run-scripts-on-nat-vps/
+https://github.com/15976770947/v2zj
 #  八合一脚本 自己手动修复完毕
 https://github.com/15976770947/v2ray-ba-he-1
 Xraycs1  是tls1.1 1.2  xrayv2ray 是最新tls1.3
