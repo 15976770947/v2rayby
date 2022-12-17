@@ -250,11 +250,15 @@ archAffix(){
 }
 
 getData() {
+
+IPV4=$(dig @1.1.1.1 +short  txt ch  whoami.cloudflare  |tr -d \")
+IPV6=$(dig +short @2606:4700:4700::1111 -6 ch txt whoami.cloudflare|tr -d \")
+
     if [[ "$TLS" = "true" || "$XTLS" = "true" ]]; then
         echo ""
         echo " Xray一键脚本，运行之前请确认如下条件已经具备："
         colorEcho ${YELLOW} "  1. 一个伪装域名"
-        colorEcho ${YELLOW} "  2. 伪装域名DNS解析指向当前服务器ip（${IP}）"
+        colorEcho ${YELLOW} "  2. 伪装域名DNS解析指向当前服务器ip $IPV4,$IPV6"
         colorEcho ${BLUE} "  3. 如果/root目录下有 xray.pem 和 xray.key 证书密钥文件，无需理会条件2"
         echo " "
         read -p " 确认满足按y，按其他退出脚本：" answer
@@ -265,7 +269,7 @@ getData() {
         echo ""
         while true
         do
-            read -p " 请输入伪装域名：" DOMAIN
+            read -p "请输入伪装域名：" DOMAIN
             if [[ -z "${DOMAIN}" ]]; then
                 colorEcho ${RED} " 域名输入错误，请重新输入！"
             else
@@ -273,7 +277,7 @@ getData() {
             fi
         done
         DOMAIN=${DOMAIN,,}
-        colorEcho ${BLUE}  " 伪装域名(host)：$DOMAIN"
+        colorEcho ${BLUE}  "伪装域名(host)：$DOMAIN"
 
         echo ""
         if [[ -f ~/xray.pem && -f ~/xray.key ]]; then
@@ -283,9 +287,22 @@ getData() {
         else
             resolve=`curl -sL http://ip-api.com/json/${DOMAIN}`
             res=`echo -n ${resolve} | grep ${IP}`
-            if [[ -z "${res}" ]]; then
-                colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
-                colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
+
+IPV4=$(dig @1.1.1.1 +short  txt ch  whoami.cloudflare  |tr -d \")
+IPV6=$(dig +short @2606:4700:4700::1111 -6 ch txt whoami.cloudflare|tr -d \")
+resolve4="$(dig A  +short ${DOMAIN} @1.1.1.1)"
+resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
+res4=`echo -n ${resolve4} | grep $IPV4`
+res6=`echo -n ${resolve6} | grep $IPV6`
+res_judge=`echo $res4$res6`
+echo $res_judge
+IP=`echo $res4$res6`
+
+echo "${DOMAIN}  points to: ${res_judge}"
+
+            if [[ -z "${res_judge}" ]]; then
+                colorEcho ${BLUE}  "${DOMAIN} 解析结果：${res_judge}"
+                colorEcho ${RED}  " 域名未解析到当前服务器IP:$IPV4,$IPV6 !"
                 exit 1
             fi
         fi
@@ -556,9 +573,17 @@ getCert() {
         ~/.acme.sh/acme.sh  --upgrade  --auto-upgrade
         ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
         if [[ "$BT" = "false" ]]; then
-            ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "systemctl stop nginx" --post-hook "systemctl restart nginx"  --standalone
+	   if [[ ! -z "${res4}" ]]; then
+            ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "systemctl stop nginx" --post-hook "systemctl restart nginx"  --standalone --listen-v6
+	   else
+            ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "systemctl stop nginx" --post-hook "systemctl restart nginx"  --standalone --listen-v6
+           fi
         else
-            ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "nginx -s stop || { echo -n ''; }" --post-hook "nginx -c /www/server/nginx/conf/nginx.conf || { echo -n ''; }"  --standalone
+		if [[ ! -z "${res4}" ]]; then	
+            ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "nginx -s stop || { echo -n ''; }" --post-hook "nginx -c /www/server/nginx/conf/nginx.conf || { echo -n ''; }"  --standalone --listen-v6
+                else
+            ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "nginx -s stop || { echo -n ''; }" --post-hook "nginx -c /www/server/nginx/conf/nginx.conf || { echo -n ''; }"  --standalone --listen-v6
+		fi 
         fi
         [[ -f ~/.acme.sh/${DOMAIN}_ecc/ca.cer ]] || {
             colorEcho $RED " 获取证书失败，请复制上面的红色文字到 https://hijk.art 反馈"
@@ -669,7 +694,7 @@ server {
     charset utf-8;
 
     # ssl配置
-    ssl_protocols TLSv1.1 TLSv1.2;
+    ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
     ssl_ecdh_curve secp384r1;
     ssl_prefer_server_ciphers on;
