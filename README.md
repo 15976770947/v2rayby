@@ -1,3 +1,5 @@
+#  最新多合一脚本 xtls-rprx-vision
+https://github.com/reeceyng/v2ray-agent
 #  目前主用这个  nat在下面 或者微信收藏看方案
 https://github.com/15976770947/v2zj
 #  单纯ipv6 执行这个 参考这个 还有nat 有v4加v6用脚本一次性过即可 动态域名参考ddns 自己脚本
